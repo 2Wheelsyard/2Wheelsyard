@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - 2Wheelsyard</title>
+
+  <style>
+    @font-face {
+      font-family: 'Rage Italic';
+      src: url('fonts/RAGE.TTF') format('truetype');
+      font-weight: normal;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('lamas_rally_monviso_2025-308.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      font-family: 'Rage Italic', cursive;
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
+      z-index: 0;
+    }
+
+    .menu-bg {
+      position: absolute;
+      top: 75px;
+      right: 215px;
+      width: 550px;
+      height: 60px;
+      backdrop-filter: blur(3px);
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    nav {
+      position: absolute;
+      top: 90px;
+      right: 250px;
+      z-index: 2;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 40px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover { color: #ccc; }
+
+    .content {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 35px;
+      max-width: 700px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(5px);
+      padding: 40px;
+      border-radius: 20px;
+      z-index: 1;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="menu-bg"></div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="content">
+    <h1>Contacta-nos</h1>
+    <p>
+      Entra em contacto connosco para saberes mais sobre os nossos produtos, encomendas ou colaborações.<br>
+      Envia-nos um email para <b>info@2wheelsyard.com</b> ou visita-nos nas redes sociais.<br><br>
+      Estamos sempre prontos para acelerar contigo 🏍️
+    </p>
+  </div>
+</body>
+</html>
