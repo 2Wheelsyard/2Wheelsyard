@@ -92,116 +92,108 @@
       text-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
 
-    /* Slot da imagem da empresa */
+    /* Logótipo lateral (empresa) */
     .logo-slot {
       position: absolute;
-      top: 950px;
-      left: 2200px;
+      top: 20px;
+      left: 20px;
       z-index: 2;
     }
 
     .logo-slot img {
-      width: 300px;
+      width: 200px;
       height: auto;
-      box-shadow: 2px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(2px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
-   /* Novo slot: imagem no topo (isolado) */
-.topo-imagem {
-  position: fixed;          /* fica fixo e independente do layout */
-  top: -590px;               /* ajusta aqui para subir/descer a imagem */
-  left: 50%;                /* centra horizontalmente */
-  transform: translateX(-50%);
-  z-index: 3;               /* acima do menu */
-  text-align: center;
-  pointer-events: none;     /* garante que não interfere com cliques no menu */
-}
+    /* Imagem no topo (título Rage Italic) */
+    .topo-imagem {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-align: center;
+      pointer-events: none;
+    }
 
-.topo-imagem img {
-  width: 900px;             /* tamanho da imagem */
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-}
+    .topo-imagem img {
+      width: 900px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    }
 
-/* ========================== */
-/* 📱 Estilos para Telemóveis */
-/* ========================== */
-@media (max-width: 768px) {
+    /* ========================== */
+    /* 📱 Estilos para Telemóveis */
+    /* ========================== */
+    @media (max-width: 768px) {
+      body {
+        background-size: cover;
+        background-position: center top;
+        background-attachment: scroll;
+      }
 
-  /* Fundo: fixa a imagem e centraliza melhor */
-  body {
-    background-size: cover;
-    background-position: center top;
-    background-attachment: scroll;
-  }
+      .menu-bg {
+        top: 70px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 80%;
+        height: 45px;
+      }
 
-  /* Ajusta o menu */
-  .menu-bg {
-    top: 70px;
-    right: 50%;
-    transform: translateX(50%);
-    width: 80%;
-    height: 45px;
-  }
+      nav {
+        top: 75px;
+        right: 50%;
+        transform: translateX(50%);
+      }
 
-  nav {
-    top: 75px;
-    right: 50%;
-    transform: translateX(50%);
-  }
+      nav a {
+        font-size: 22px;
+        margin: 0 10px;
+      }
 
-  nav a {
-    font-size: 22px;
-    margin: 0 10px;
-  }
+      .curve {
+        top: 22%;
+      }
 
-  /* Título curvado ou imagem no topo */
-  .curve {
-    top: 22%;
-  }
+      svg {
+        width: 100%;
+        height: auto;
+      }
 
-  svg {
-    width: 100%;
-    height: auto;
-  }
+      svg text {
+        font-size: 60px;
+      }
 
-  svg text {
-    font-size: 60px;
-  }
+      .topo-imagem img {
+        width: 90%;
+        max-width: 600px;
+      }
 
-  /* Imagem do topo (logótipo ou título) */
-  .topo-imagem img {
-    width: 90%;
-    max-width: 600px;
-  }
+      .logo-slot img {
+        width: 120px;
+      }
 
-  /* Logo lateral (se quiseres mostrar no mobile) */
-  .logo-slot img {
-    width: 150px;
-  }
-
-  /* Melhora leitura geral */
-  * {
-    text-align: center;
-  }
-}
+      * {
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Slot da imagem da empresa -->
+  <!-- Logótipo lateral -->
   <div class="logo-slot">
     <img src="2Wheelsyardpng - Editado.png" alt="Foto da Empresa" />
   </div>
 
-  <!-- Slot adicional: imagem no topo -->
+  <!-- Imagem do topo -->
   <div class="topo-imagem">
     <img src="2WheelsyardIrageitalic.png" alt="Imagem no topo" />
   </div>
 
-  <!-- Blur só atrás do menu -->
+  <!-- Blur atrás do menu -->
   <div class="menu-bg"></div>
 
   <!-- Menu -->
@@ -211,4 +203,5 @@
     <a href="shop.html">Shop</a>
     <a href="contact.html">Contact</a>
   </nav>
-
+</body>
+</html>
