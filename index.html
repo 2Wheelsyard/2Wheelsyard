@@ -125,7 +125,68 @@
   filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
 }
 
+/* ========================== */
+/* 📱 Estilos para Telemóveis */
+/* ========================== */
+@media (max-width: 768px) {
 
+  /* Fundo: fixa a imagem e centraliza melhor */
+  body {
+    background-size: cover;
+    background-position: center top;
+    background-attachment: scroll;
+  }
+
+  /* Ajusta o menu */
+  .menu-bg {
+    top: 70px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 80%;
+    height: 45px;
+  }
+
+  nav {
+    top: 75px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  nav a {
+    font-size: 22px;
+    margin: 0 10px;
+  }
+
+  /* Título curvado ou imagem no topo */
+  .curve {
+    top: 22%;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  svg text {
+    font-size: 60px;
+  }
+
+  /* Imagem do topo (logótipo ou título) */
+  .topo-imagem img {
+    width: 90%;
+    max-width: 600px;
+  }
+
+  /* Logo lateral (se quiseres mostrar no mobile) */
+  .logo-slot img {
+    width: 150px;
+  }
+
+  /* Melhora leitura geral */
+  * {
+    text-align: center;
+  }
+}
   </style>
 </head>
 
