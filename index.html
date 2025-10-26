@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
@@ -14,12 +14,19 @@
       font-display: swap;
     }
 
+    /* Fundo com faixa branca e degradé */
     body {
       margin: 0;
-      height: 100vh;
-      background-image: url('lamas_rally_monviso_2025-308.jpg');
+      height: 1500vh;
+      background: linear-gradient(
+          to bottom,
+          #0f0f0f 0px,       /* branco sujo no topo */
+          #0c0c0c 80px,      /* faixa branca de ~5cm */
+          rgba(255,255,255,0) 150px   /* transição suave para o fundo */
+        ),
+        url('lamas_rally_monviso_2025-308.jpg');
       background-size: cover;
-      background-position: center 20%;
+      background-position: center -5%;
       background-attachment: fixed;
       background-repeat: no-repeat;
       font-family: 'Rage Italic', cursive;
@@ -34,82 +41,72 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 85%);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 55%,
+        rgba(0,0,0,0.6) 105%
+      );
       z-index: 0;
     }
 
-    /* Blur atrás do menu */
-    .menu-bg {
-      position: absolute;
-      top: 105px;
-      right: 215px;
-      width: 550px;
-      height: 50px;
-      backdrop-filter: blur(3px);
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      z-index: 1;
-    }
+/* Slot do logotipo 2Wheelsyard no topo */
+.logo-topo {
+  position: fixed;         /* fica fixo e independente */
+  top: -600;                  /* encostado ao topo */
+  left: 50%;               /* centrado horizontalmente */
+  transform: translateX(-50%);
+  z-index: 5;              /* acima do menu e fundo */
+  pointer-events: none;    /* não interfere com cliques */
+}
+
+.logo-topo img {
+  width: 900px;            /* ajusta o tamanho conforme quiseres */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5)); /* ligeiro brilho */
+}
+
 
     /* Menu */
     nav {
       position: absolute;
-      top: 110px;
-      right: 250px;
+      top: 15px;
+      right: 180px;
       z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 80px; /* 🔹 espaçamento uniforme entre os links */
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
       font-size: 40px;
+      letter-spacing: 1px;
       transition: color 0.3s ease;
     }
 
     nav a:hover {
       color: #ccc;
     }
+/* Logótipo lateral (empresa) */
+.logo-slot {
+  position: fixed; /* <-- estava absolute, agora FIXO */
+  top: 950px;       /* ajusta a posição */
+  left: 25px;
+  z-index: 10;     /* acima de tudo */
+}
 
-    /* Título curvado */
-    .curve {
-      position: absolute;
-      top: 16%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
+.logo-slot img {
+  width: 320px;
+  height: auto;
+}
 
-    svg {
-      width: 900px;
-      height: 400px;
-    }
-
-    svg text {
-      fill: white;
-      font-size: 110px;
-      font-family: 'Rage Italic', cursive;
-      text-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
-
-    /* Logótipo lateral (empresa) */
-    .logo-slot {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 2;
-    }
-
-    .logo-slot img {
-      width: 200px;
-      height: auto;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    }
 
     /* Imagem no topo (título Rage Italic) */
     .topo-imagem {
       position: fixed;
-      top: 0;
+      top: -600px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
@@ -138,32 +135,20 @@
         top: 70px;
         right: 50%;
         transform: translateX(50%);
-        width: 80%;
-        height: 45px;
+        width: 90%;
+        height: 50px;
       }
 
       nav {
         top: 75px;
         right: 50%;
         transform: translateX(50%);
+        flex-direction: row;
+        gap: 30px;
       }
 
       nav a {
-        font-size: 22px;
-        margin: 0 10px;
-      }
-
-      .curve {
-        top: 22%;
-      }
-
-      svg {
-        width: 100%;
-        height: auto;
-      }
-
-      svg text {
-        font-size: 60px;
+        font-size: 24px;
       }
 
       .topo-imagem img {
@@ -172,7 +157,7 @@
       }
 
       .logo-slot img {
-        width: 120px;
+        width: 150px;
       }
 
       * {
@@ -188,10 +173,12 @@
     <img src="2Wheelsyardpng - Editado.png" alt="Foto da Empresa" />
   </div>
 
-  <!-- Imagem do topo -->
-  <div class="topo-imagem">
-    <img src="2WheelsyardIrageitalic.png" alt="Imagem no topo" />
+  <!-- Slot do logotipo 2Wheelsyard no topo -->
+  <div class="logo-topo">
+    <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
   </div>
+
+
 
   <!-- Blur atrás do menu -->
   <div class="menu-bg"></div>
