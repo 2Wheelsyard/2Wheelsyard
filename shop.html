@@ -3,13 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop - 2Wheelsyard</title>
+  <title>Shop | 2Wheelsyard</title>
+
+ <!-- Fonte Poppins (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 
   <style>
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
-      font-weight: normal;
       font-style: italic;
       font-display: swap;
     }
@@ -17,98 +20,97 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background-image: url('lamas_rally_monviso_2025-308.jpg');
+      font-family: 'Poppins', sans-serif; /* fonte moderna e clean */      color: white;
+      background: linear-gradient(
+          to bottom,
+          #0f0f0f 0px,
+          #0c0c0c 80px,
+          rgba(255,255,255,0) 150px
+        ),
+        url('lamas_rally_monviso_2025-320.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
-      font-family: 'Rage Italic', cursive;
-      color: white;
-      overflow-x: hidden;
       position: relative;
+      overflow-x: hidden;
     }
 
     body::after {
-      content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 105%);
       z-index: 0;
     }
 
-    .menu-bg {
-      position: absolute;
-      top: 75px;
-      right: 215px;
-      width: 550px;
-      height: 60px;
-      backdrop-filter: blur(3px);
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      z-index: 1;
-    }
-
     nav {
-      position: absolute;
-      top: 90px;
-      right: 250px;
-      z-index: 2;
+      position: fixed;
+      top: 25px;
+      right: 180px;
+      z-index: 3;
+      display: flex;
+      gap: 80px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
-      font-size: 40px;
+      font-size: 28px;
+      letter-spacing: 1px;
       transition: color 0.3s ease;
     }
 
     nav a:hover { color: #ccc; }
 
-    /* Produtos */
-    .shop-container {
+    /* Grade de produtos */
+    .shop {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 40px;
-      padding: 220px 100px;
-      z-index: 1;
-      position: relative;
+      width: 80%;
+      margin: 250px auto;
     }
 
     .product {
-      background: rgba(0,0,0,0.45);
-      border-radius: 20px;
-      text-align: center;
-      padding: 25px;
-      transition: transform 0.3s ease;
+      background: rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(6px);
+      border-radius: 15px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease;
     }
 
-    .product:hover { transform: translateY(-8px); }
+    .product:hover { transform: translateY(-10px); }
 
     .product img {
       width: 100%;
-      height: 320px;
-      object-fit: cover;
       border-radius: 10px;
+      height: 350px;
+      object-fit: cover;
     }
 
     .product h3 {
-      font-size: 36px;
-      margin: 10px 0;
+      font-size: 32px;
+      margin: 20px 0 10px;
     }
 
     .product p {
-      font-size: 30px;
-      opacity: 0.9;
+      font-size: 28px;
+    }
+
+    @media (max-width: 768px) {
+      nav { top: 70px; right: 50%; transform: translateX(50%); gap: 30px; }
+      nav a { font-size: 24px; }
+      .shop { width: 90%; margin: 180px auto; }
+      .product h3 { font-size: 26px; }
+      .product p { font-size: 22px; }
     }
   </style>
 </head>
-
 <body>
-  <div class="menu-bg"></div>
-
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
@@ -116,27 +118,20 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <section class="shop-container">
+  <div class="shop">
     <div class="product">
-      <img src="produto1.jpg" alt="Produto 1">
-      <h3>Capacete Racing</h3>
-      <p>€120</p>
+      <img src="IMG_3603.jpeg" alt="" />
+      <h3>CRF 300 Rally/L Tail tidy</h3>
+      <p>20e</p>
     </div>
+
     <div class="product">
-      <img src="produto2.jpg" alt="Produto 2">
-      <h3>Luvas de Couro</h3>
-      <p>€45</p>
+      <img src="2Wheelsyard V2.jpg" alt="" />
+      <h3>3D Print on demand</h3>
+      <p>15e</p>
     </div>
-    <div class="product">
-      <img src="produto3.jpg" alt="Produto 3">
-      <h3>Casaco Touring</h3>
-      <p>€150</p>
-    </div>
-    <div class="product">
-      <img src="produto4.jpg" alt="Produto 4">
-      <h3>Botas Adventure</h3>
-      <p>€95</p>
-    </div>
-  </section>
+
+   
+  </div>
 </body>
 </html>

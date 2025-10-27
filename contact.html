@@ -3,90 +3,104 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact - 2Wheelsyard</title>
+  <title>Contact | 2Wheelsyard</title>
+
+ <!-- Fonte Poppins (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 
   <style>
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
-      font-weight: normal;
       font-style: italic;
       font-display: swap;
     }
 
     body {
       margin: 0;
-      height: 100vh;
-      background-image: url('lamas_rally_monviso_2025-308.jpg');
+      min-height: 100vh;
+      height: auto; 
+      font-family: 'Poppins', sans-serif; /* fonte moderna e clean */
+      color: white;      color: white;
+      overflow-x: hidden;
+      position: relative;
+      background: linear-gradient(
+          to bottom,
+          #0f0f0f 0px,
+          #0c0c0c 80px,
+          rgba(255,255,255,0) 150px
+        ),
+        url('lamas_rally_monviso_2025-347.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
-      font-family: 'Rage Italic', cursive;
-      color: white;
-      overflow: hidden;
-      position: relative;
     }
 
     body::after {
-      content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 105%);
       z-index: 0;
     }
 
-    .menu-bg {
-      position: absolute;
-      top: 75px;
-      right: 215px;
-      width: 550px;
-      height: 60px;
-      backdrop-filter: blur(3px);
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      z-index: 1;
-    }
-
     nav {
-      position: absolute;
-      top: 90px;
-      right: 250px;
-      z-index: 2;
+      position: fixed;
+      top: 25px;
+      right: 180px;
+      z-index: 3;
+      display: flex;
+      gap: 80px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
-      font-size: 40px;
+      font-size: 28px;
+      letter-spacing: 1px;
       transition: color 0.3s ease;
     }
 
     nav a:hover { color: #ccc; }
 
-    .content {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      font-size: 35px;
-      max-width: 700px;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(5px);
-      padding: 40px;
-      border-radius: 20px;
-      z-index: 1;
+   /* Colocar no FIM do CSS */
+.contact {
+  position: relative;
+  top: 500px; /* move para baixo */
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  border-radius: 15px;
+  padding: 60px;
+  text-align: center;
+}
+
+
     }
 
+    .contact h1 {
+      font-size: 90px;
+      margin-bottom: 30px;
+    }
+
+    .contact p {
+      font-size: 30px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      nav { top: 70px; right: 50%; transform: translateX(50%); gap: 30px; }
+      nav a { font-size: 24px; }
+      .contact { width: 90%; margin: 180px auto; padding: 30px; }
+      .contact h1 { font-size: 60px; }
+      .contact p { font-size: 22px; }
+    }
   </style>
 </head>
-
 <body>
-  <div class="menu-bg"></div>
-
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
@@ -94,13 +108,11 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <div class="content">
-    <h1>Contacta-nos</h1>
-    <p>
-      Entra em contacto connosco para saberes mais sobre os nossos produtos, encomendas ou colaborações.<br>
-      Envia-nos um email para <b>info@2wheelsyard.com</b> ou visita-nos nas redes sociais.<br><br>
-      Estamos sempre prontos para acelerar contigo 🏍️
-    </p>
+  <div class="contact">
+    <h1>Get in touch</h1>
+    <p>Luxembourg/Portugal</p>
+    <p>📧 2wheelsyard@gmail.com</p>
+    <p>Need something custom? We’re here.</p>
   </div>
 </body>
 </html>

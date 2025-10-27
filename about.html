@@ -3,91 +3,114 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us - 2Wheelsyard</title>
+  <title>About Us | 2Wheelsyard</title>
+
+   <!-- Fonte Poppins (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 
   <style>
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
-      font-weight: normal;
       font-style: italic;
       font-display: swap;
     }
 
     body {
       margin: 0;
-      height: 100vh;
-      background-image: url('lamas_rally_monviso_2025-308.jpg');
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif; /* fonte moderna e clean */
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+      background: linear-gradient(
+          to bottom,
+          #0f0f0f 0px,
+          #0c0c0c 80px,
+          rgba(255,255,255,0) 150px
+        ),
+        url('IMG_202510272224170.JPG');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
-      font-family: 'Rage Italic', cursive;
-      color: white;
-      overflow: hidden;
-      position: relative;
     }
 
     body::after {
-      content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 105%);
       z-index: 0;
     }
 
-    .menu-bg {
-      position: absolute;
-      top: 75px;
-      right: 215px;
-      width: 550px;
-      height: 60px;
-      backdrop-filter: blur(3px);
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      z-index: 1;
-    }
-
+    /* Menu igual ao index */
     nav {
-      position: absolute;
-      top: 90px;
-      right: 250px;
-      z-index: 2;
+      position: fixed;
+      top: 25px;
+      right: 180px;
+      z-index: 3;
+      display: flex;
+      gap: 80px;
+      justify-content: center;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
-      font-size: 40px;
+      font-size: 28px;
+      letter-spacing: 1px;
       transition: color 0.3s ease;
     }
 
-    nav a:hover { color: #ccc; }
-
-    /* Conteúdo */
-    .content {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 900px;
-      text-align: center;
-      font-size: 35px;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(5px);
-      padding: 40px 60px;
-      border-radius: 20px;
-      z-index: 1;
+    nav a:hover {
+      color: #ccc;
     }
 
+    /* Conteúdo principal */
+    .content {
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+  margin: 250px auto;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  padding: 80px 60px;
+  border-radius: 15px;
+  text-align: left; /* ✅ texto alinhado à esquerda */
+}
+
+
+    .content h1 {
+      font-size: 80px;
+      margin-bottom: 40px;
+    }
+
+   .content p {
+  font-size: 26px;
+  line-height: 1.6;      /* controla o espaçamento entre linhas dentro do mesmo parágrafo */
+  margin-bottom: 18px;   /* controla o espaço entre parágrafos */
+}
+
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        top: 70px;
+        right: 50%;
+        transform: translateX(50%);
+        gap: 30px;
+      }
+      nav a { font-size: 24px; }
+      .content { padding: 40px 20px; margin: 180px auto; }
+      .content h1 { font-size: 60px; }
+      .content p { font-size: 24px; }
+    }
   </style>
 </head>
-
 <body>
-  <div class="menu-bg"></div>
-
+  <!-- Menu -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
@@ -95,13 +118,17 @@
     <a href="contact.html">Contact</a>
   </nav>
 
+  
   <div class="content">
-    <h1>A nossa história</h1>
-    <p>
-      A 2Wheelsyard nasceu da paixão pelas motos — peças, acessórios e estilo.
-      Somos uma equipa movida pelo amor à estrada e pelo som dos motores.
-      O nosso objetivo é oferecer qualidade, design e autenticidade a cada motociclista.
-    </p>
+  <h1>Our history..</h1>
+  <p>Two brothers, born in a small coastal town near Lisbon, sharing a passion for motorcycles and the dream of one day racing the Dakar Rally.</p>
+  <p>We started small, with the bikes we could afford at the time, exploring Portugal’s sandy trails and winding through its small villages, simply enjoying the ride.</p>
+  <p>As time went by, we emigrated to another country, and things began to grow — including our motorcycles. After a few good acquisitions, we found ourselves able to buy two brand-new Yamaha Ténéré 700 Rally Editions.</p>
+  <p>Now we’re living our dream, one step closer each day — traveling the world whenever family time allows.</p>
+  <p>This year, we reached a new chapter by lining up at the start of our very first rally roadbook — turning a lifelong dream into reality.</p>
+  <p>And the journey doesn’t stop here — we’re here to add our story to the motorcycle community, to inspire, share, and contribute however we can.</p>
+</div>
+
   </div>
 </body>
 </html>

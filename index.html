@@ -1,11 +1,15 @@
-<!<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2Wheelsyard</title>
 
+  <!-- Fonte Poppins (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
+    /* ====== Fonte personalizada (Rage Italic) ====== */
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
@@ -14,28 +18,30 @@
       font-display: swap;
     }
 
-    /* Fundo com faixa branca e degradé */
+    /* ====== Fundo e base ====== */
     body {
       margin: 0;
-      height: 1500vh;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif; /* fonte moderna e clean */
+      color: white;
+      overflow: hidden;
+      position: relative;
+
+      /* faixa escura + degradé + imagem */
       background: linear-gradient(
           to bottom,
-          #0f0f0f 0px,       /* branco sujo no topo */
-          #0c0c0c 80px,      /* faixa branca de ~5cm */
-          rgba(255,255,255,0) 150px   /* transição suave para o fundo */
+          #0f0f0f 0px,
+          #0c0c0c 80px,
+          rgba(255,255,255,0) 150px
         ),
         url('lamas_rally_monviso_2025-308.jpg');
       background-size: cover;
       background-position: center -5%;
       background-attachment: fixed;
       background-repeat: no-repeat;
-      font-family: 'Rage Italic', cursive;
-      color: white;
-      overflow: hidden;
-      position: relative;
     }
 
-    /* Vinheta nos cantos */
+    /* vinheta (escurece cantos) */
     body::after {
       content: "";
       position: absolute;
@@ -49,81 +55,61 @@
       z-index: 0;
     }
 
-/* Slot do logotipo 2Wheelsyard no topo */
-.logo-topo {
-  position: fixed;         /* fica fixo e independente */
-  top: -600;                  /* encostado ao topo */
-  left: 50%;               /* centrado horizontalmente */
-  transform: translateX(-50%);
-  z-index: 5;              /* acima do menu e fundo */
-  pointer-events: none;    /* não interfere com cliques */
-}
-
-.logo-topo img {
-  width: 900px;            /* ajusta o tamanho conforme quiseres */
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5)); /* ligeiro brilho */
-}
-
-
-    /* Menu */
-    nav {
-      position: absolute;
-      top: 15px;
-      right: 180px;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      gap: 80px; /* 🔹 espaçamento uniforme entre os links */
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 40px;
-      letter-spacing: 1px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #ccc;
-    }
-/* Logótipo lateral (empresa) */
-.logo-slot {
-  position: fixed; /* <-- estava absolute, agora FIXO */
-  top: 950px;       /* ajusta a posição */
-  left: 25px;
-  z-index: 10;     /* acima de tudo */
-}
-
-.logo-slot img {
-  width: 320px;
-  height: auto;
-}
-
-
-    /* Imagem no topo (título Rage Italic) */
-    .topo-imagem {
+    /* ====== Logotipo topo (2Wheelsyard em imagem Rage Italic) ====== */
+    .logo-topo {
       position: fixed;
       top: -600px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 3;
-      text-align: center;
+      z-index: 5;
       pointer-events: none;
     }
 
-    .topo-imagem img {
+    .logo-topo img {
       width: 900px;
       height: auto;
       object-fit: contain;
       filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     }
 
-    /* ========================== */
-    /* 📱 Estilos para Telemóveis */
-    /* ========================== */
+    /* ====== Logotipo lateral ====== */
+    .logo-slot {
+      position: fixed;
+      bottom: -30px;
+      left: 25px;
+      z-index: 4;
+    }
+
+    .logo-slot img {
+      width: 320px;
+      height: auto;
+    }
+
+    /* ====== Menu ====== */
+    nav {
+      position: fixed;
+      top: 25px;
+      right: 180px;
+      z-index: 3;
+      display: flex;
+      gap: 80px;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+      letter-spacing: 1px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ccc;
+    }
+
+    /* ====== Responsivo ====== */
     @media (max-width: 768px) {
       body {
         background-size: cover;
@@ -131,33 +117,24 @@
         background-attachment: scroll;
       }
 
-      .menu-bg {
-        top: 70px;
-        right: 50%;
-        transform: translateX(50%);
-        width: 90%;
-        height: 50px;
-      }
-
-      nav {
-        top: 75px;
-        right: 50%;
-        transform: translateX(50%);
-        flex-direction: row;
-        gap: 30px;
-      }
-
-      nav a {
-        font-size: 24px;
-      }
-
-      .topo-imagem img {
+      .logo-topo img {
         width: 90%;
         max-width: 600px;
       }
 
       .logo-slot img {
         width: 150px;
+      }
+
+      nav {
+        top: 70px;
+        right: 50%;
+        transform: translateX(50%);
+        gap: 30px;
+      }
+
+      nav a {
+        font-size: 20px;
       }
 
       * {
@@ -170,18 +147,13 @@
 <body>
   <!-- Logótipo lateral -->
   <div class="logo-slot">
-    <img src="2Wheelsyardpng - Editado.png" alt="Foto da Empresa" />
+    <img src="2Wheelsyardpng - Editado.png" alt="Logotipo da Empresa" />
   </div>
 
-  <!-- Slot do logotipo 2Wheelsyard no topo -->
+  <!-- Logotipo principal no topo -->
   <div class="logo-topo">
     <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
   </div>
-
-
-
-  <!-- Blur atrás do menu -->
-  <div class="menu-bg"></div>
 
   <!-- Menu -->
   <nav>
