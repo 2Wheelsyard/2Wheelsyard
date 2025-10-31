@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
@@ -16,6 +16,21 @@
       font-weight: normal;
       font-style: italic;
       font-display: swap;
+    }
+
+    /* ====== Ícone Instagram ====== */
+    .instagram img {
+      width: 35px;
+      height: 35px;
+      filter: invert(1);
+      margin-left: 20px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      vertical-align: middle;
+    }
+
+    .instagram:hover img {
+      transform: scale(1.2);
+      filter: invert(0.8) sepia(1) saturate(5) hue-rotate(300deg);
     }
 
     /* ====== Fundo e base ====== */
@@ -39,17 +54,12 @@
       background-repeat: no-repeat;
     }
 
-    /* vinheta (escurece cantos) */
     body::after {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(0,0,0,0) 55%,
-        rgba(0,0,0,0.6) 105%
-      );
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 105%);
       z-index: 0;
     }
 
@@ -92,6 +102,7 @@
       display: flex;
       gap: 80px;
       justify-content: center;
+      align-items: center;
     }
 
     nav a {
@@ -129,7 +140,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Animação quando ativo */
     .hamburger.active div:nth-child(1) {
       transform: rotate(45deg) translateY(10px);
     }
@@ -146,7 +156,7 @@
     @media (max-width: 768px) {
       body {
         background-size: cover;
-        background-position: center 0, 30% 80;
+        background-position: center 0, 30% 80px ;
         background-attachment: scroll;
         overflow-y: auto;
       }
@@ -163,7 +173,6 @@
         width: 420px;
         height: auto;
         margin-top: -100px;
-        filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
       }
 
       /* Logotipo lateral mobile */
@@ -201,7 +210,6 @@
         font-size: 26px;
       }
 
-      /* Ícone hambúrguer */
       .hamburger {
         display: flex;
       }
@@ -233,6 +241,11 @@
     <a href="about.html">About Us</a>
     <a href="shop.html">Shop</a>
     <a href="contact.html">Contact</a>
+
+    <!-- Ícone Instagram -->
+    <a href="https://www.instagram.com/2wheelsyard" target="_blank" class="instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" />
+    </a>
   </nav>
 
   <!-- Script -->
