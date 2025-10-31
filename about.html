@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us | 2Wheelsyard</title>
 
-   <!-- Fonte Poppins (Google Fonts) -->
+  <!-- Fonte Poppins (Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 
   <style>
     @font-face {
@@ -20,7 +19,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: 'Poppins', sans-serif; /* fonte moderna e clean */
+      font-family: 'Poppins', sans-serif;
       color: white;
       overflow-x: hidden;
       position: relative;
@@ -38,6 +37,7 @@
     }
 
     body::after {
+      content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
@@ -45,7 +45,25 @@
       z-index: 0;
     }
 
-    /* Menu igual ao index */
+
+    /* ====== Logotipo topo ====== */
+    .logo-topo {
+      position: fixed;
+      top: -500px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .logo-topo img {
+      width: 750px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    }
+
+    /* ====== Menu (desktop) ====== */
     nav {
       position: fixed;
       top: 25px;
@@ -68,67 +86,169 @@
       color: #ccc;
     }
 
-    /* Conteúdo principal */
-    .content {
-  position: relative;
-  z-index: 2;
-  max-width: 80%;
-  margin: 250px auto;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  padding: 80px 60px;
-  border-radius: 15px;
-  text-align: left; /* ✅ texto alinhado à esquerda */
-}
+    /* ====== Ícone hambúrguer (mobile) ====== */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      width: 35px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 6;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
+    .hamburger div {
+      width: 100%;
+      height: 4px;
+      background-color: white;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    /* Animação do ícone */
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translateY(10px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translateY(-10px);
+    }
+
+    /* ====== Conteúdo principal ====== */
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 80%;
+      margin: 250px auto;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      padding: 80px 60px;
+      border-radius: 15px;
+      text-align: left;
+    }
 
     .content h1 {
       font-size: 80px;
       margin-bottom: 40px;
     }
 
-   .content p {
-  font-size: 26px;
-  line-height: 1.6;      /* controla o espaçamento entre linhas dentro do mesmo parágrafo */
-  margin-bottom: 18px;   /* controla o espaço entre parágrafos */
-}
-
+    .content p {
+      font-size: 26px;
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
 
+    /* ====== Responsivo (mobile) ====== */
     @media (max-width: 768px) {
+      body {
+        background-size: cover%;
+        background-position: 30% center;
+        background-attachment: scroll;
+      }
+
+      @media (max-width: 768px) {
+  /* Reduz o tamanho do logotipo apenas no mobile */
+  .logo-topo img {
+    width: 550px; /* ou o valor que quiseres, ex: 300px */
+    margin-top: 150px; /* se quiseres ajustar a posição */
+  }
+}
+
+
+      /* Menu responsivo */
       nav {
-        top: 70px;
+        position: fixed;
+        top: 80px;
         right: 50%;
         transform: translateX(50%);
-        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px 40px;
+        border-radius: 10px;
+        display: none;
+        z-index: 5;
       }
-      nav a { font-size: 24px; }
-      .content { padding: 40px 20px; margin: 180px auto; }
-      .content h1 { font-size: 60px; }
-      .content p { font-size: 24px; }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        font-size: 26px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .content {
+        padding: 40px 20px;
+        margin: 180px auto;
+      }
+
+      .content h1 {
+        font-size: 60px;
+        text-align: center;
+      }
+
+      .content p {
+        font-size: 24px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Ícone hambúrguer -->
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Logotipo principal no topo -->
+  <div class="logo-topo">
+    <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
+  </div>
+
+
   <!-- Menu -->
-  <nav>
+  <nav id="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="shop.html">Shop</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  
+  <!-- Conteúdo -->
   <div class="content">
-  <h1>Our history..</h1>
-  <p>Two brothers, born in a small coastal town near Lisbon, sharing a passion for motorcycles and the dream of one day racing the Dakar Rally.</p>
-  <p>We started small, with the bikes we could afford at the time, exploring Portugal’s sandy trails and winding through its small villages, simply enjoying the ride.</p>
-  <p>As time went by, we emigrated to another country, and things began to grow — including our motorcycles. After a few good acquisitions, we found ourselves able to buy two brand-new Yamaha Ténéré 700 Rally Editions.</p>
-  <p>Now we’re living our dream, one step closer each day — traveling the world whenever family time allows.</p>
-  <p>This year, we reached a new chapter by lining up at the start of our very first rally roadbook — turning a lifelong dream into reality.</p>
-  <p>And the journey doesn’t stop here — we’re here to add our story to the motorcycle community, to inspire, share, and contribute however we can.</p>
-</div>
-
+    <h1>Our history..</h1>
+    <p>Two brothers, born in a small coastal town near Lisbon, sharing a passion for motorcycles and the dream of one day racing the Dakar Rally.</p>
+    <p>We started small, with the bikes we could afford at the time, exploring Portugal’s sandy trails and winding through its small villages, simply enjoying the ride.</p>
+    <p>As time went by, we emigrated to another country, and things began to grow — including our motorcycles. After a few good acquisitions, we found ourselves able to buy two brand-new Yamaha Ténéré 700 Rally Editions.</p>
+    <p>Now we’re living our dream, one step closer each day — traveling the world whenever family time allows.</p>
+    <p>This year, we reached a new chapter by lining up at the start of our very first rally roadbook — turning a lifelong dream into reality.</p>
+    <p>And the journey doesn’t stop here — we’re here to add our story to the motorcycle community, to inspire, share, and contribute however we can.</p>
   </div>
+
+  <!-- Script para o menu -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      menu.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
