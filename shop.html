@@ -36,15 +36,22 @@
       overflow-x: hidden;
     }
 
-    /* ====== Logotipo topo ====== */
-    .logo-topo {
-      position: fixed;
-      top: -500px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-      pointer-events: none;
-    }
+/* ====== Logotipo topo ====== */
+.logo-topo {
+  position: fixed;
+  top: -500px;              /* o torna visível no topo da tela */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.logo-topo img {
+  width: 750px;           /* 👈 ajuste o tamanho que quiser */
+  height: auto;
+}
+
+
 
     body::after {
       content: "";
