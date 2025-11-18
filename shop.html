@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop | 2Wheelsyard</title>
 
-  <!-- Fonte Poppins (Google Fonts) -->
+  <!-- Fonte Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -36,22 +36,19 @@
       overflow-x: hidden;
     }
 
-/* ====== Logotipo topo ====== */
-.logo-topo {
-  position: fixed;
-  top: -500px;              /* o torna visível no topo da tela */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  pointer-events: none;
-}
-
-.logo-topo img {
-  width: 750px;           /* 👈 ajuste o tamanho que quiser */
-  height: auto;
-}
-
-
+    /* Logo */
+    .logo-topo {
+      position: fixed;
+      top: -500px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .logo-topo img {
+      width: 750px;
+      height: auto;
+    }
 
     body::after {
       content: "";
@@ -62,7 +59,7 @@
       z-index: 0;
     }
 
-    /* ====== Menu ====== */
+    /* Menu */
     nav {
       position: fixed;
       top: 25px;
@@ -72,7 +69,6 @@
       gap: 80px;
       justify-content: center;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -80,10 +76,9 @@
       letter-spacing: 1px;
       transition: color 0.3s ease;
     }
-
     nav a:hover { color: #ccc; }
 
-    /* ====== Ícone hambúrguer (mobile) ====== */
+    /* Hamburger */
     .hamburger {
       display: none;
       position: fixed;
@@ -96,7 +91,6 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .hamburger div {
       width: 100%;
       height: 4px;
@@ -104,20 +98,17 @@
       border-radius: 5px;
       transition: all 0.3s ease;
     }
-
     .hamburger.active div:nth-child(1) {
       transform: rotate(45deg) translateY(10px);
     }
-
     .hamburger.active div:nth-child(2) {
       opacity: 0;
     }
-
     .hamburger.active div:nth-child(3) {
       transform: rotate(-45deg) translateY(-10px);
     }
 
-    /* ====== Grade de produtos ====== */
+    /* SHOP */
     .shop {
       position: relative;
       z-index: 2;
@@ -137,27 +128,23 @@
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-
     .product:hover { transform: translateY(-10px); }
-
     .product img {
       width: 100%;
       border-radius: 10px;
       height: 350px;
       object-fit: cover;
     }
-
     .product h3 {
       font-size: 32px;
       margin: 20px 0 10px;
     }
-
     .product p {
       font-size: 26px;
       margin-bottom: 10px;
     }
 
-    /* ====== Descrição expansível ====== */
+    /* Descrição */
     .description {
       max-height: 60px;
       overflow: hidden;
@@ -166,11 +153,7 @@
       line-height: 1.5;
       color: #e0e0e0;
     }
-
-    .product.active .description {
-      max-height: 300px; /* mostra tudo quando ativo */
-    }
-
+    .product.active .description { max-height: 300px; }
     .see-more {
       display: inline-block;
       margin-top: 10px;
@@ -180,19 +163,62 @@
       text-decoration: underline;
     }
 
-    /* ====== Responsivo ====== */
+    /* === POPUP EMAIL === */
+    #emailPopup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .popup-box {
+      background: #111;
+      padding: 25px;
+      width: 350px;
+      border-radius: 15px;
+      border: 1px solid #555;
+    }
+
+    .popup-box h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .popup-box input,
+    .popup-box textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .popup-buttons button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      background: #444;
+      color: white;
+    }
+    .popup-buttons button:hover { background: #666; }
+
+    /* Responsivo */
     @media (max-width: 768px) {
-      body {
-        background-size: cover;
-        background-position: center top;
-        background-attachment: scroll;
-      }
-
-      .logo-topo img {
-        width: 550px;
-        margin-top: 150px;
-      }
-
+      .logo-topo img { width: 550px; margin-top: 150px; }
       nav {
         position: fixed;
         top: 80px;
@@ -207,24 +233,21 @@
         display: none;
         z-index: 5;
       }
-
       nav.show { display: flex; }
       nav a { font-size: 26px; }
       .hamburger { display: flex; }
       .shop { width: 90%; margin: 180px auto; grid-template-columns: 1fr; }
-      .product h3 { font-size: 26px; }
-      .product p { font-size: 22px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ícone hambúrguer -->
+  <!-- Hamburger -->
   <div class="hamburger" id="hamburger">
     <div></div><div></div><div></div>
   </div>
 
-  <!-- Logotipo principal -->
+  <!-- Logo -->
   <div class="logo-topo">
     <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
   </div>
@@ -244,14 +267,10 @@
       <h3>CRF 300 Rally/L Tail tidy</h3>
       <p>20€</p>
       <div class="description">
-
-Precision 3D-printed in ASA high-resistance polymer.
-
-Features integrated license plate light and reflector mounting holes, ensuring full road compliance with a tilt angle under 30°.
-
-Plug & play — no modifications required.
-
-For further details or custom options, feel free to contact us.
+        Precision 3D-printed in ASA high-resistance polymer.<br><br>
+        Features integrated license plate light and reflector mounting holes, ensuring full road compliance with a tilt angle under 30°.<br><br>
+        Plug & play — no modifications required.<br><br>
+        For further details or custom options, feel free to contact us.
       </div>
       <span class="see-more">See more</span>
     </div>
@@ -268,6 +287,24 @@ For further details or custom options, feel free to contact us.
     </div>
   </div>
 
+  <!-- POPUP EMAIL -->
+  <div id="emailPopup">
+    <div class="popup-box">
+      <h2>Enviar Email</h2>
+
+      <label>Assunto:</label>
+      <input type="text" id="emailSubject" readonly>
+
+      <label>Mensagem:</label>
+      <textarea id="emailMessage" rows="5"></textarea>
+
+      <div class="popup-buttons">
+        <button onclick="sendEmail()">Enviar</button>
+        <button onclick="closeEmailPopup()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script>
     // Menu mobile
@@ -278,7 +315,7 @@ For further details or custom options, feel free to contact us.
       menu.classList.toggle('show');
     });
 
-    // Expansão de descrição
+    // Descrição expansível
     const products = document.querySelectorAll('.product');
     products.forEach(product => {
       const seeMore = product.querySelector('.see-more');
@@ -287,6 +324,49 @@ For further details or custom options, feel free to contact us.
         seeMore.textContent = product.classList.contains('active') ? 'See less' : 'See more';
       });
     });
+
+    // === ABRIR POPUP AO CLICAR NO PRODUTO ===
+    products.forEach(product => {
+      product.addEventListener('click', (e) => {
+        // Impede que o "see more" abra o popup
+        if (e.target.classList.contains("see-more")) return;
+
+        const title = product.querySelector("h3").textContent;
+        openEmailPopup(title);
+      });
+    });
+
+    function openEmailPopup(slotName) {
+      document.getElementById("emailSubject").value = slotName;
+      document.getElementById("emailPopup").style.display = "flex";
+    }
+
+    function closeEmailPopup() {
+      document.getElementById("emailPopup").style.display = "none";
+    }
+
+    function sendEmail() {
+  const subject = document.getElementById("emailSubject").value;
+  const message = document.getElementById("emailMessage").value;
+
+  fetch("/.netlify/functions/sendEmail", {
+    method: "POST",
+    body: JSON.stringify({ subject, message })
+  })
+    .then(res => res.text())
+    .then(result => {
+      if (result === "OK") {
+        alert("Mensagem enviada com sucesso!");
+        closeEmailPopup();
+      } else {
+        alert("Ocorreu um erro ao enviar a mensagem.");
+      }
+    })
+    .catch(() => {
+      alert("Erro ao comunicar com o servidor.");
+    });
+}
+
   </script>
 
 </body>
