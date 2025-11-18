@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
@@ -176,12 +176,14 @@
     }
 
     .popup-box {
-      background: #111;
-      padding: 25px;
-      width: 350px;
-      border-radius: 15px;
-      border: 1px solid #555;
-    }
+  background: #111;
+  padding: 35px; /* ← AQUI A MAGIA */
+  padding-right: 50px;
+  width: 700px;
+  border-radius: 15px;
+  border: 1px solid #555;
+}
+
 
     .popup-box h2 {
       margin-top: 0;
@@ -290,17 +292,28 @@
   <!-- POPUP EMAIL -->
   <div id="emailPopup">
     <div class="popup-box">
-      <h2>Enviar Email</h2>
+      <h2>Send Email</h2>
 
-      <label>Assunto:</label>
+      <label>Subject:</label>
       <input type="text" id="emailSubject" readonly>
 
-      <label>Mensagem:</label>
-      <textarea id="emailMessage" rows="5"></textarea>
+      <label>Message:</label>
+      <textarea id="emailMessage" rows="12">
+Hello,
+
+Here are the details for my request:
+
+• Size:
+• Quantity:
+• Shipping address:
+• Additional notes:
+
+Thank you!
+      </textarea>
 
       <div class="popup-buttons">
-        <button onclick="sendEmail()">Enviar</button>
-        <button onclick="closeEmailPopup()">Cancelar</button>
+        <button onclick="sendEmail()">Send</button>
+        <button onclick="closeEmailPopup()">Cancel</button>
       </div>
     </div>
   </div>
@@ -325,10 +338,9 @@
       });
     });
 
-    // === ABRIR POPUP AO CLICAR NO PRODUTO ===
+    // ABRIR POPUP AO CLICAR NO PRODUTO
     products.forEach(product => {
       product.addEventListener('click', (e) => {
-        // Impede que o "see more" abra o popup
         if (e.target.classList.contains("see-more")) return;
 
         const title = product.querySelector("h3").textContent;
@@ -346,27 +358,29 @@
     }
 
     function sendEmail() {
-  const subject = document.getElementById("emailSubject").value;
-  const message = document.getElementById("emailMessage").value;
+      const subject = document.getElementById("emailSubject").value;
+      const message = document.getElementById("emailMessage").value;
 
-  fetch("/.netlify/functions/sendEmail", {
-    method: "POST",
-    body: JSON.stringify({ subject, message })
-  })
-    .then(res => res.text())
-    .then(result => {
-      if (result === "OK") {
-        alert("Mensagem enviada com sucesso!");
-        closeEmailPopup();
-      } else {
-        alert("Ocorreu um erro ao enviar a mensagem.");
-      }
-    })
-    .catch(() => {
-      alert("Erro ao comunicar com o servidor.");
-    });
-}
-
+      fetch("/.netlify/functions/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ subject, message })
+      })
+        .then(res => res.text())
+        .then(result => {
+          if (result === "OK") {
+            alert("All set! We've received your message.");
+            closeEmailPopup();
+          } else {
+            alert("An error occurred while sending the message.");
+          }
+        })
+        .catch(() => {
+          alert("Error communicating with the server.");
+        });
+    }
   </script>
 
 </body>
