@@ -1,6 +1,12 @@
 export async function handler(event, context) {
-  const { subject, message } = JSON.parse(event.body);
+  let data = {};
+  try {
+    data = JSON.parse(event.body || "{}");
+  } catch (e) {
+    return { statusCode: 400, body: "Invalid JSON" };
+  }
 
+  const { subject, message } = data;
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
   const emailData = {
