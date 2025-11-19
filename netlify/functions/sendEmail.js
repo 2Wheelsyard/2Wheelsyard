@@ -1,25 +1,45 @@
-function sendEmail() {
-  const subject = document.getElementById("emailSubject").value;
-  const message = document.getElementById("emailMessage").value;
-  const userEmail = document.getElementById("userEmail").value;
+import fetch from "node-fetch";
 
-  fetch("/.netlify/functions/sendEmail", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ subject, message, userEmail })
-  })
-    .then(res => res.text())
-    .then(result => {
-      if (result === "OK") {
-        alert("All set! We've received your message.");
-        closeEmailPopup();
-      } else {
-        alert("An error occurred while sending the message.");
-      }
-    })
-    .catch(() => {
-      alert("Error communicating with the server.");
+export async function handler(event) {
+  try {
+    const { subject, message, userEmail } = JSON.parse(event.body);
+
+    console.log("Subject:", subject);
+    console.log("Message:", message);
+    console.log("User Email:", userEmail);
+
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+    const emailData = {
+      from: "2Wheelsyard <no-reply@2wheelsyard.com>",
+      to: "2wheelsyard@gmail.com",
+      subject: "New shop request: " + subject,
+      text:
+        `Customer email: ${userEmail}\n\n` +
+        "Message:\n" +
+        message
+    };
+
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(emailData)
     });
+
+    const data = await response.json();
+    console.log("Response status:", response.status);
+    console.log("Response:", data);
+
+    if (response.ok) {
+      return { statusCode: 200, body: "OK" };
+    } else {
+      return { statusCode: 500, body: "ERROR" };
+    }
+  } catch (error) {
+    console.log("SendEmail error:", error);
+    return { statusCode: 500, body: "ERROR" };
+  }
 }
