@@ -26,7 +26,10 @@ export async function handler(event, context) {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(emailData)
+      const userEmail = document.getElementById("userEmail").value;
+
+body: JSON.stringify({ subject, message, userEmail })
+
     });
 
     const data = await response.json();
