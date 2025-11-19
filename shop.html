@@ -179,7 +179,8 @@
   background: #111;
   padding: 35px; /* ← AQUI A MAGIA */
   padding-right: 50px;
-  width: 700px;
+  width: 600px;
+  height: 650px;
   border-radius: 15px;
   border: 1px solid #555;
 }
@@ -190,7 +191,7 @@
       text-align: center;
     }
 
-    .popup-box input,
+      .popup-box input,
     .popup-box textarea {
       width: 100%;
       margin-top: 10px;
@@ -200,6 +201,13 @@
       outline: none;
       font-size: 16px;
     }
+
+    /* AUMENTA SÓ A CAIXA DE MENSAGEM */
+    #emailMessage {
+      height: 300px; /* ← ajusta aqui o tamanho que quiseres */
+      resize: none;  /* opcional: bloqueia redimensionar manualmente */
+    }
+
 
     .popup-buttons {
       display: flex;
@@ -295,10 +303,14 @@
       <h2>Send Email</h2>
 
       <label>Subject:</label>
-      <input type="text" id="emailSubject" readonly>
+<input type="text" id="emailSubject" readonly>
 
-      <label>Message:</label>
-      <textarea id="emailMessage" rows="12">
+<label>Your Email:</label>
+<input type="email" id="userEmail" placeholder="your@email.com">
+
+<label>Message:</label>
+<textarea id="emailMessage" rows="20";>
+
 Hello,
 
 Here are the details for my request:
