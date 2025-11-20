@@ -1,35 +1,49 @@
-function sendEmail() {
-  const subject = document.getElementById("emailSubject").value;
-  const message = document.getElementById("emailMessage").value;
-  const userEmail = document.getElementById("userEmail").value;
+export async function handler(event) {
+  try {
+    const { subject, message, userEmail } = JSON.parse(event.body);
 
-  // Validate email (optional but recommended)
-  if (!userEmail || !userEmail.includes("@")) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+    console.log("Subject:", subject);
+    console.log("Message:", message);
+    console.log("User Email:", userEmail);
 
-  fetch("/.netlify/functions/sendEmail", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      subject: subject,
-      message: message,
-      userEmail: userEmail
-    })
-  })
-    .then(res => res.text())
-    .then(result => {
-      if (result === "OK") {
-        alert("All set! We've received your message.");
-        closeEmailPopup();
-      } else {
-        alert("An error occurred while sending the message.");
-      }
-    })
-    .catch(() => {
-      alert("Error communicating with the server.");
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+    if (!RESEND_API_KEY) {
+      console.log("Missing API key!");
+      return { statusCode: 500, body: "Missing API key" };
+    }
+
+    const emailData = {
+      from: "2Wheelsyard <no-reply@2wheelsyard.com>",
+      to: "2wheelsyard@gmail.com",
+      subject: "New shop request: " + subject,
+      text:
+        `Customer email: ${userEmail}\n\n` +
+        "Message:\n" +
+        message
+    };
+
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(emailData)
     });
+
+    const data = await response.json();
+
+    console.log("Resend status:", response.status);
+    console.log("Resend body:", data);
+
+    if (response.ok) {
+      return { statusCode: 200, body: "OK" };
+    } else {
+      return { statusCode: 500, body: "ERROR" };
+    }
+  } catch (error) {
+    console.log("SendEmail ERROR:", error);
+    return { statusCode: 500, body: "ERROR" };
+  }
 }
