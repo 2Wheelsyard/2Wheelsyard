@@ -3,6 +3,12 @@ function sendEmail() {
   const message = document.getElementById("emailMessage").value;
   const userEmail = document.getElementById("userEmail").value;
 
+  // Validate email (optional but recommended)
+  if (!userEmail || !userEmail.includes("@")) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
   fetch("/.netlify/functions/sendEmail", {
     method: "POST",
     headers: {
