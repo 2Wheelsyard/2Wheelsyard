@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop | 2Wheelsyard</title>
 
-  <!-- Fonte Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -16,8 +15,75 @@
       font-display: swap;
     }
 
+/* ================= GALLERY POPUP ================= */
+#galleryPopup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+#galleryPopup img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+#galleryPrev,
+#galleryNext {
+  position: absolute;
+  top: 50%;
+  font-size: 45px;
+  background: rgba(7, 7, 7, 0.5);
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  cursor: pointer;
+  border-radius: 10px;
+  transform: translateY(-50%);
+}
+#galleryPrev { left: 40px; }
+#galleryNext { right: 40px; }
+#galleryPrev:hover,
+#galleryNext:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+#galleryOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+    
+/* Ícone de expandir */
+.expand-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.55);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 4;
+  transition: 0.2s;
+}
+.expand-icon:hover {
+  background: rgba(8, 8, 8, 0.8);
+}
+.product-image-wrapper {
+  position: relative;
+  /* NOVO: Garante a largura total para a imagem e define uma altura base */
+  width: 100%;
+  height: 250px; 
+  margin-bottom: 10px;
+}
+
     body {
-      margin: 0;
+      margin: 0px;
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       color: white;
@@ -25,7 +91,7 @@
           to bottom,
           #0f0f0f 0px,
           #0c0c0c 80px,
-          rgba(255,255,255,0) 150px
+          rgba(255,255,255,0) 120px
         ),
         url('lamas_rally_monviso_2025-320.jpg');
       background-size: cover;
@@ -50,14 +116,7 @@
       height: auto;
     }
 
-    body::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 105%);
-      z-index: 0;
-    }
+
 
     /* Menu */
     nav {
@@ -108,15 +167,16 @@
       transform: rotate(-45deg) translateY(-10px);
     }
 
-    /* SHOP */
+    /* SHOP - ALTERADO PARA DOIS SLOTS RETANGULARES */
     .shop {
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-      width: 80%;
-      margin: 250px auto;
+      /* MUDANÇA CRÍTICA: Reduzido minmax para 300px para caberem 2 colunas */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 500px; /* Gap reduzido */
+      width: 70%; /* Largura aumentada */
+      margin: 300px auto ;
     }
 
     .product {
@@ -127,31 +187,41 @@
       padding: 20px;
       transition: transform 0.3s ease;
       cursor: pointer;
+      /* NOVO: Altura fixa para formato retangular */
+      height: auto;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .product:hover { transform: translateY(-10px); }
     .product img {
+      /* MUDANÇA CRÍTICA: Ocupa 100% da largura do slot */
       width: 100%;
+      /* Ocupa 100% da altura definida no wrapper */
+      height: 100%; 
       border-radius: 10px;
-      height: 350px;
-      object-fit: cover;
+      /* Garante que a imagem preencha a área sem distorção */
+      object-fit: cover; 
     }
     .product h3 {
-      font-size: 32px;
-      margin: 20px 0 10px;
+      font-size: 28px; /* Reduzido */
+      margin: 10px 0 5px;
     }
     .product p {
-      font-size: 26px;
-      margin-bottom: 10px;
+      font-size: 20px; /* Reduzido */
+      margin-bottom: 5px;
     }
 
     /* Descrição */
     .description {
-      max-height: 60px;
+      max-height: 40px; /* Reduzido para caber */
       overflow: hidden;
       transition: max-height 0.4s ease;
-      font-size: 20px;
-      line-height: 1.5;
+      font-size: 18px; /* Reduzido */
+      line-height: 1.4;
       color: #e0e0e0;
+      flex-grow: 1; /* Ocupa o espaço disponível */
     }
     .product.active .description { max-height: 300px; }
     .see-more {
@@ -176,23 +246,23 @@
     }
 
     .popup-box {
-  background: #111;
-  padding: 35px; /* ← AQUI A MAGIA */
-  padding-right: 50px;
-  width: 600px;
-  height: 650px;
-  border-radius: 15px;
-  border: 1px solid #555;
-}
-
+      background: #111;
+      padding: 35px;
+      padding-right: 50px;
+      width: 500px;
+      height: 750px;
+      border-radius: 15px;
+      border: 1px solid #555;
+    }
 
     .popup-box h2 {
-      margin-top: 0;
+      margin-top: -10px;
       text-align: center;
     }
 
-      .popup-box input,
-    .popup-box textarea {
+    .popup-box input,
+    .popup-box textarea,
+    .popup-box select {
       width: 100%;
       margin-top: 10px;
       padding: 10px;
@@ -202,12 +272,23 @@
       font-size: 16px;
     }
 
-    /* AUMENTA SÓ A CAIXA DE MENSAGEM */
+    /* AUMENTA só a caixa da mensagem */
     #emailMessage {
-      height: 300px; /* ← ajusta aqui o tamanho que quiseres */
-      resize: none;  /* opcional: bloqueia redimensionar manualmente */
+      height: 150px;
+      resize: none;
     }
 
+    .popup-section-title {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .popup-two-cols {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 25px;
+    }
 
     .popup-buttons {
       display: flex;
@@ -227,42 +308,56 @@
     .popup-buttons button:hover { background: #666; }
 
     /* Responsivo */
-    @media (max-width: 768px) {
-      .logo-topo img { width: 550px; margin-top: 150px; }
-      nav {
-        position: fixed;
-        top: 80px;
-        right: 50%;
-        transform: translateX(50%);
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 20px 40px;
-        border-radius: 10px;
-        display: none;
-        z-index: 5;
-      }
-      nav.show { display: flex; }
-      nav a { font-size: 26px; }
-      .hamburger { display: flex; }
-      .shop { width: 90%; margin: 180px auto; grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+    /* ... (outras regras) ... */
+    
+    /* NOVO: Força o hamburger a aparecer no mobile e usa flex para alinhar os traços */
+    .hamburger {
+        display: flex; 
     }
+
+    .logo-topo img { width: 550px; margin-top: 150px; }
+    nav {
+      position: fixed;
+      top: 80px;
+      right: 50%;
+      transform: translateX(50%);
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px 40px;
+      border-radius: 10px;
+      display: none;
+      z-index: 5;
+    }
+    
+    nav.show { display: flex; }
+    nav a { font-size: 26px; }
+    /* MUDANÇA: No mobile, o shop volta a ter 1 coluna */
+    .shop { width: 90%; gap: 30px ; margin: 180px auto; grid-template-columns: 1fr; }
+}
+    
   </style>
 </head>
+<div id="galleryPopup">
+  <div id="galleryOverlay" onclick="closeGallery()"></div>
+
+  <button id="galleryPrev" onclick="prevImage()">❮</button>
+  <img id="galleryImage">
+  <button id="galleryNext" onclick="nextImage()">❯</button>
+</div>
+
 <body>
 
-  <!-- Hamburger -->
   <div class="hamburger" id="hamburger">
     <div></div><div></div><div></div>
   </div>
 
-  <!-- Logo -->
   <div class="logo-topo">
     <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
   </div>
 
-  <!-- Menu -->
   <nav id="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
@@ -270,10 +365,14 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Produtos -->
   <div class="shop">
+    
     <div class="product">
-      <img src="IMG_3603.jpeg" alt="CRF 300 Rally/L Tail tidy" />
+      <div class="product-image-wrapper">
+        <img src="IMG_3603.jpeg" alt="CRF 300 Rally/L Tail tidy" />
+        <div class="expand-icon" onclick="openGallery(event, 0)">⤢</div>
+      </div>
+
       <h3>CRF 300 Rally/L Tail tidy</h3>
       <p>20€</p>
       <div class="description">
@@ -286,7 +385,11 @@
     </div>
 
     <div class="product">
-      <img src="2Wheelsyard V2.jpg" alt="3D Print on demand" />
+      <div class="product-image-wrapper">
+        <img src="2Wheelsyard V2.jpg" alt="3D Print on demand" />
+        <div class="expand-icon" onclick="openGallery(event, 1)">⤢</div>
+      </div>
+
       <h3>3D Print on demand</h3>
       <p>15€</p>
       <div class="description">
@@ -295,30 +398,73 @@
       </div>
       <span class="see-more">See more</span>
     </div>
+
   </div>
 
-  <!-- POPUP EMAIL -->
   <div id="emailPopup">
     <div class="popup-box">
       <h2>Send Email</h2>
 
       <label>Subject:</label>
-<input type="text" id="emailSubject" readonly>
+      <input type="text" id="emailSubject" readonly>
 
-<label>Your Email:</label>
-<input type="email" id="userEmail" placeholder="your@email.com">
+      <label>Your Email:</label>
+      <input type="email" id="userEmail" placeholder="your@email.com">
 
-<label>Message:</label>
-<textarea id="emailMessage" rows="20";>
+      <div id="sizeGroup">
+        <label>Size:</label>
+        <select id="sizeSelect">
+          <option value="">Select a size</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
+      </div>
 
-Hello,
+      <label>Quantity:</label>
+      <select id="quantitySelect">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
 
-Here are the details for my request:
+      <div class="popup-section-title">Shipping address</div>
 
-• Size:
-• Quantity:
-• Shipping address:
-• Additional notes:
+      <label></label>
+      <input type="text" id="shipStreet" placeholder="Street name">
+
+      <div class="popup-two-cols">
+        <div>
+          <label></label>
+          <input type="text" id="shipHouse" placeholder="N°">
+        </div>
+        <div>
+          <label></label>
+          <input type="text" id="shipPostal" placeholder="Postal code">
+        </div>
+      </div>
+
+      <label></label>
+      <input type="text" id="shipCity" placeholder="City">
+
+      <label></label>
+      <input type="text" id="shipCountry" placeholder="Country">
+
+      <label>Message:</label>
+      <textarea id="emailMessage" rows="8">
+Hello 2Wheelsyard,
+
+Here are some extra details for my request:
+
 
 Thank you!
       </textarea>
@@ -330,7 +476,6 @@ Thank you!
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
     // Menu mobile
     const hamburger = document.getElementById('hamburger');
@@ -339,6 +484,73 @@ Thank you!
       hamburger.classList.toggle('active');
       menu.classList.toggle('show');
     });
+
+/* ================= GALLERY SYSTEM ================= */
+
+// Lista de imagens por produto (podes adicionar mais depois)
+const productImages = [
+  [
+    "CRF300 tailtidy img2.png",
+    "CRF300 tailtidy img1.png",
+    "IMG_3603.jpeg",
+    
+  ],
+  [
+    "2Wheelsyard V2.jpg",
+    
+  ]
+];
+
+let currentProduct = 0;
+let currentImageIndex = 0;
+
+function openGallery(event, productId) {
+  event.stopPropagation(); // evita abrir o popup de email
+
+  currentProduct = productId;
+  currentImageIndex = 0;
+
+  const galleryPopup = document.getElementById("galleryPopup");
+  const galleryImg = document.getElementById("galleryImage");
+  const prevBtn = document.getElementById("galleryPrev");
+  const nextBtn = document.getElementById("galleryNext");
+
+  galleryImg.src = productImages[productId][0];
+
+  // mostrar / esconder setas
+  if (productImages[productId].length > 1) {
+    prevBtn.style.display = "block";
+    nextBtn.style.display = "block";
+  } else {
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+  }
+
+  galleryPopup.style.display = "flex";
+}
+
+function closeGallery() {
+  document.getElementById("galleryPopup").style.display = "none";
+}
+
+function showImage() {
+  document.getElementById("galleryImage").src =
+    productImages[currentProduct][currentImageIndex];
+}
+
+function nextImage() {
+  currentImageIndex =
+    (currentImageIndex + 1) % productImages[currentProduct].length;
+  showImage();
+}
+
+function prevImage() {
+  currentImageIndex =
+    (currentImageIndex - 1 + productImages[currentProduct].length) %
+    productImages[currentProduct].length;
+  showImage();
+}
+
 
     // Descrição expansível
     const products = document.querySelectorAll('.product');
@@ -350,10 +562,20 @@ Thank you!
       });
     });
 
+    // Palavras-chave para produtos com tamanho
+    const sizeKeywords = [
+      "pullover", "hoodie", "sweatshirt",
+      "tshirt", "t-shirt", "shirt",
+      "jersey", "merch", "apparel",
+      "wear", "top", "long sleeve", "sweater"
+    ];
+
     // ABRIR POPUP AO CLICAR NO PRODUTO
     products.forEach(product => {
       product.addEventListener('click', (e) => {
         if (e.target.classList.contains("see-more")) return;
+        // Evita abrir o popup de email se clicar no ícone de expandir da galeria
+        if (e.target.classList.contains("expand-icon")) return; 
 
         const title = product.querySelector("h3").textContent;
         openEmailPopup(title);
@@ -363,6 +585,29 @@ Thank you!
     function openEmailPopup(slotName) {
       document.getElementById("emailSubject").value = slotName;
       document.getElementById("emailPopup").style.display = "flex";
+
+      // Reset campos
+      document.getElementById("userEmail").value = "";
+      document.getElementById("sizeSelect").value = "";
+      document.getElementById("quantitySelect").value = "1";
+      document.getElementById("shipStreet").value = "";
+      document.getElementById("shipHouse").value = "";
+      document.getElementById("shipPostal").value = "";
+      document.getElementById("shipCity").value = "";
+      document.getElementById("shipCountry").value = "";
+      document.getElementById("emailMessage").value =
+`Hello 2Wheelsyard,
+
+Here are some extra details for my request:
+
+
+Thank you!`;
+
+      // Mostrar ou esconder SIZE conforme o produto
+      const lowerTitle = slotName.toLowerCase();
+      const hasSize = sizeKeywords.some(kw => lowerTitle.includes(kw));
+      const sizeGroup = document.getElementById("sizeGroup");
+      sizeGroup.style.display = hasSize ? "block" : "none";
     }
 
     function closeEmailPopup() {
@@ -371,14 +616,47 @@ Thank you!
 
     function sendEmail() {
       const subject = document.getElementById("emailSubject").value;
-      const message = document.getElementById("emailMessage").value;
+      const userEmail = document.getElementById("userEmail").value;
+      const sizeGroup = document.getElementById("sizeGroup");
+      const size = document.getElementById("sizeSelect").value;
+      const quantity = document.getElementById("quantitySelect").value;
+      const street = document.getElementById("shipStreet").value;
+      const house = document.getElementById("shipHouse").value;
+      const postal = document.getElementById("shipPostal").value;
+      const city = document.getElementById("shipCity").value;
+      const country = document.getElementById("shipCountry").value;
+      const extraMessage = document.getElementById("emailMessage").value;
+
+      if (!userEmail || !userEmail.includes("@")) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      let composedMessage = "";
+      composedMessage += `Product: ${subject}\n`;
+      if (sizeGroup.style.display !== "none") {
+        composedMessage += `Size: ${size || "Not specified"}\n`;
+      }
+      composedMessage += `Quantity: ${quantity}\n\n`;
+
+      composedMessage += "Shipping address:\n";
+      composedMessage += `${street || ""} ${house || ""}\n`;
+      composedMessage += `${postal || ""} ${city || ""}\n`;
+      composedMessage += `${country || ""}\n\n`;
+
+      composedMessage += "Additional message:\n";
+      composedMessage += extraMessage;
 
       fetch("/.netlify/functions/sendEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ subject, message })
+        body: JSON.stringify({
+          subject: subject,
+          message: composedMessage,
+          userEmail: userEmail
+        })
       })
         .then(res => res.text())
         .then(result => {

@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export async function handler(event) {
   try {
     const { subject, message, userEmail } = JSON.parse(event.body);
@@ -9,6 +7,11 @@ export async function handler(event) {
     console.log("User Email:", userEmail);
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+    if (!RESEND_API_KEY) {
+      console.log("Missing API key!");
+      return { statusCode: 500, body: "Missing API key" };
+    }
 
     const emailData = {
       from: "2Wheelsyard <no-reply@2wheelsyard.com>",
@@ -30,8 +33,9 @@ export async function handler(event) {
     });
 
     const data = await response.json();
-    console.log("Response status:", response.status);
-    console.log("Response:", data);
+
+    console.log("Resend status:", response.status);
+    console.log("Resend body:", data);
 
     if (response.ok) {
       return { statusCode: 200, body: "OK" };
@@ -39,7 +43,7 @@ export async function handler(event) {
       return { statusCode: 500, body: "ERROR" };
     }
   } catch (error) {
-    console.log("SendEmail error:", error);
+    console.log("SendEmail ERROR:", error);
     return { statusCode: 500, body: "ERROR" };
   }
 }
