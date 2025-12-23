@@ -175,6 +175,7 @@
       /* MUDANÇA CRÍTICA: Reduzido minmax para 300px para caberem 2 colunas */
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 500px; /* Gap reduzido */
+      row-gap: 100px; 
       width: 70%; /* Largura aumentada */
       margin: 300px auto ;
     }
@@ -189,7 +190,6 @@
       cursor: pointer;
       /* NOVO: Altura fixa para formato retangular */
       height: auto;
-      min-height: 500px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -203,16 +203,13 @@
       border-radius: 10px;
       /* Garante que a imagem preencha a área sem distorção */
       object-fit: cover; 
+      
     }
     .product h3 {
-      font-size: 28px; /* Reduzido */
+      font-size: 25px; /* Reduzido */
       margin: 10px 0 5px;
     }
-    .product p {
-      font-size: 20px; /* Reduzido */
-      margin-bottom: 5px;
-    }
-
+   
     /* Descrição */
     .description {
       max-height: 40px; /* Reduzido para caber */
@@ -223,7 +220,7 @@
       color: #e0e0e0;
       flex-grow: 1; /* Ocupa o espaço disponível */
     }
-    .product.active .description { max-height: 300px; }
+    .product.active .description { max-height: 700px; }
     .see-more {
       display: inline-block;
       margin-top: 10px;
@@ -231,6 +228,7 @@
       color: #ccc;
       cursor: pointer;
       text-decoration: underline;
+      
     }
 
     /* === POPUP EMAIL === */
@@ -250,7 +248,7 @@
       padding: 35px;
       padding-right: 50px;
       width: 500px;
-      height: 750px;
+      height: 850px;
       border-radius: 15px;
       border: 1px solid #555;
     }
@@ -366,12 +364,44 @@
   </nav>
 
   <div class="shop">
+        
+
+<div class="product">
+      <div class="product-image-wrapper">
+        <img src="Shooting 2.jpg" alt="CP2-Inspired Engine Design Pullover" />
+        <div class="expand-icon" onclick="openGallery(event, 2)">⤢</div>
+      </div>
+
+      <h3>CP2-Inspired Engine Design Pullover</h3>
+      <p>59,77€</p>
+      <div class="description">
+        CP2-Inspired Engine Design Pullover
+
+Designed by me and created for motorcycle enthusiasts who appreciate engineering and aesthetics. This pullover features an original illustration inspired by the iconic CP2-style parallel twin engine—focused purely on form, mechanics, and passion for motors.<br><br>
+
+A bold yet minimal design, made to be worn on and off the bike.<br><br>
+
+Pullover details:<br><br>
+• Oversized, relaxed unisex fit<br><br>
+• Soft heavyweight fleece interior<br><br>
+• 60% Airlume combed & ring-spun cotton, • 40% polyester fleece<br><br>
+• Set-in sleeves with a slight drop<br><br>
+• Side-seamed construction<br><br>
+• Blank sourced from Nicaragua<br><br>
+
+This is an independent, small-scale project made by an enthusiast, not an official brand or licensed product.
+
+      </div>
+      <span class="see-more">See more</span>
+    </div>
+
     
     <div class="product">
       <div class="product-image-wrapper">
         <img src="IMG_3603.jpeg" alt="CRF 300 Rally/L Tail tidy" />
         <div class="expand-icon" onclick="openGallery(event, 0)">⤢</div>
       </div>
+
 
       <h3>CRF 300 Rally/L Tail tidy</h3>
       <p>20€</p>
@@ -383,6 +413,7 @@
       </div>
       <span class="see-more">See more</span>
     </div>
+
 
     <div class="product">
       <div class="product-image-wrapper">
@@ -398,6 +429,7 @@
       </div>
       <span class="see-more">See more</span>
     </div>
+
 
   </div>
 
@@ -498,8 +530,16 @@ const productImages = [
   [
     "2Wheelsyard V2.jpg",
     
+  ],
+
+  [
+    "Shooting 2.jpg",
+    "Preview1.jpg",
+    "Preview2.jpg",
   ]
+
 ];
+
 
 let currentProduct = 0;
 let currentImageIndex = 0;
@@ -564,7 +604,7 @@ function prevImage() {
 
     // Palavras-chave para produtos com tamanho
     const sizeKeywords = [
-      "pullover", "hoodie", "sweatshirt",
+      "pullover", "CP2 Hoodie", "sweatshirt",
       "tshirt", "t-shirt", "shirt",
       "jersey", "merch", "apparel",
       "wear", "top", "long sleeve", "sweater"
