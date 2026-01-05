@@ -373,7 +373,7 @@
       </div>
 
       <h3>CP2-Inspired Engine Design Pullover</h3>
-      <p>59,77€</p>
+      <p>48,35€</p>
       <div class="description">
         CP2-Inspired Engine Design Pullover
 
@@ -404,7 +404,7 @@ This is an independent, small-scale project made by an enthusiast, not an offici
 
 
       <h3>CRF 300 Rally/L Tail tidy</h3>
-      <p>20€</p>
+      <p>22,50€</p>
       <div class="description">
         Precision 3D-printed in ASA high-resistance polymer.<br><br>
         Features integrated license plate light and reflector mounting holes, ensuring full road compliance with a tilt angle under 30°.<br><br>
@@ -422,7 +422,7 @@ This is an independent, small-scale project made by an enthusiast, not an offici
       </div>
 
       <h3>3D Print on demand</h3>
-      <p>15€</p>
+      <p>15,75€</p>
       <div class="description">
         We create custom 3D printed motorcycle accessories on demand — designed, printed, and tested by riders.
         For further details, feel free to contact us.
@@ -504,6 +504,8 @@ Thank you!
       <div class="popup-buttons">
         <button onclick="sendEmail()">Send</button>
         <button onclick="closeEmailPopup()">Cancel</button>
+             <button onclick="redirectToShopify()">Buy now</button>
+
       </div>
     </div>
   </div>
@@ -710,7 +712,14 @@ Thank you!`;
         .catch(() => {
           alert("Error communicating with the server.");
         });
+        
     }
+
+function redirectToShopify() {
+  // Substitua este link com o link da sua loja Shopify
+  const shopifyLink = "https://2wheelsyard.myshopify.com/";
+  window.open(shopifyLink, "_blank");
+}
   </script>
 
 </body>
