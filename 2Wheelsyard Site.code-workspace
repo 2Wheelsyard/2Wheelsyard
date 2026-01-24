@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "D:/2Wheelsyard Site"
+		},
+		{
+			"path": "D:/2Wheelsyard Site/netlify"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "2Wheelsyard Site"
+	}
+}
