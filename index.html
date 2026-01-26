@@ -4,12 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2Wheelsyard</title>
-
-  <!-- Fonte Poppins (Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
-    /* ====== Fonte personalizada (Rage Italic) ====== */
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
@@ -18,22 +14,6 @@
       font-display: swap;
     }
 
-    /* ====== Ícone Instagram ====== */
-    .instagram img {
-      width: 35px;
-      height: 35px;
-      filter: invert(1);
-      margin-left: 20px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      vertical-align: middle;
-    }
-
-    .instagram:hover img {
-      transform: scale(1.2);
-      filter: invert(0.8) sepia(1) saturate(5) hue-rotate(300deg);
-    }
-
-    /* ====== Fundo e base ====== */
     body {
       margin: 0;
       height: 100vh;
@@ -41,12 +21,7 @@
       color: white;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(
-          to bottom,
-          #0f0f0f 0px,
-          #0c0c0c 80px,
-          rgba(255,255,255,0) 150px
-        ),
+      background: linear-gradient(to bottom, #0f0f0f 0px, #0c0c0c 80px, rgba(255,255,255,0) 150px),
         url('lamas_rally_monviso_2025-308.jpg');
       background-size: cover;
       background-position: center -5%;
@@ -63,7 +38,7 @@
       z-index: 0;
     }
 
-    /* ====== Logotipo topo ====== */
+    /* ====== LOGO TOPO (Unificado) ====== */
     .logo-topo {
       position: fixed;
       top: -500px;
@@ -72,53 +47,41 @@
       z-index: 5;
       pointer-events: none;
     }
-
     .logo-topo img {
       width: 750px;
       height: auto;
-      object-fit: contain;
       filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     }
 
-    /* ====== Logotipo lateral ====== */
-    .logo-slot {
-      position: fixed;
-      bottom: -20px;
-      left: 40px;
-      z-index: 5;
-    }
-
-    .logo-slot img {
-      width: 320px;
-      height: auto;
-    }
-
-    /* ====== Menu ====== */
+    /* ====== NAV (Unificado) ====== */
     nav {
       position: fixed;
       top: 25px;
-      right: 180px;
-      z-index: 3;
+      right: 50px;
+      z-index: 100;
       display: flex;
-      gap: 80px;
-      justify-content: center;
+      gap: 50px;
       align-items: center;
     }
-
     nav a {
       color: white;
       text-decoration: none;
-      font-size: 28px;
-      letter-spacing: 1px;
+      font-size: 24px;
       font-weight: 500;
       transition: color 0.3s ease;
     }
+    nav a:hover { color: #ccc; }
 
-    nav a:hover {
-      color: #ccc;
+    .instagram img {
+      width: 35px;
+      height: 35px;
+      filter: invert(1);
+      transition: transform 0.3s ease;
+      vertical-align: middle;
     }
+    .instagram:hover img { transform: scale(1.2); }
 
-    /* ====== Ícone hambúrguer (mobile) ====== */
+    /* ====== HAMBURGER (Baseado no Contact) ====== */
     .hamburger {
       display: none;
       position: fixed;
@@ -127,11 +90,10 @@
       width: 35px;
       height: 25px;
       cursor: pointer;
-      z-index: 6;
+      z-index: 101;
       flex-direction: column;
       justify-content: space-between;
     }
-
     .hamburger div {
       width: 100%;
       height: 4px;
@@ -140,119 +102,65 @@
       transition: all 0.3s ease;
     }
 
-    .hamburger.active div:nth-child(1) {
-      transform: rotate(45deg) translateY(10px);
+    /* ====== LOGO LATERAL (Apenas Index) ====== */
+    .logo-slot {
+      position: fixed;
+      bottom: -20px;
+      left: 40px;
+      z-index: 5;
     }
+    .logo-slot img { width: 320px; height: auto; }
 
-    .hamburger.active div:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active div:nth-child(3) {
-      transform: rotate(-45deg) translateY(-10px);
-    }
-
-    /* ====== Responsivo ====== */
     @media (max-width: 768px) {
-      body {
-        background-size: cover;
-        background-position: center 0, 30% 80px ;
-        background-attachment: scroll;
-        overflow-y: auto;
-      }
-
-      /* Logotipo topo mobile */
-      .logo-topo {
-        top: -125px;
-        left: 54%;
-        transform: translateX(-50%);
-        z-index: 10;
-      }
-
-      .logo-topo img {
-        width: 420px;
-        height: auto;
-        margin-top: -100px;
-      }
-
-      /* Logotipo lateral mobile */
-      .logo-slot {
-        bottom: -50px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .logo-slot img {
-        width: 180px;
-      }
-
-      /* Menu mobile */
+      body { overflow-y: auto; }
+      .hamburger { display: flex; }
+      .logo-topo { top: -125px; left: 54%; }
+      .logo-topo img { width: 420px; margin-top: -100px; }
+      
       nav {
         position: fixed;
-        top: 80px;
-        right: 50%;
-        transform: translateX(50%);
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
-        align-items: center;
-        gap: 25px;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 20px 40px;
-        border-radius: 10px;
-        display: none;
-        z-index: 5;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.4s ease;
+        right: -100%;
       }
-
-      nav.show {
-        display: flex;
-      }
-
-      nav a {
-        font-size: 26px;
-      }
-
-      .hamburger {
-        display: flex;
-      }
+      nav.show { right: 0; }
+      .logo-slot { bottom: -50px; left: 50%; transform: translateX(-50%); }
+      .logo-slot img { width: 180px; }
     }
+    
+    .hamburger.active div:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+    .hamburger.active div:nth-child(2) { opacity: 0; }
+    .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
   </style>
 </head>
-
 <body>
-  <!-- Logótipo lateral -->
-  <div class="logo-slot">
-    <img src="2Wheelsyardpng - Editado.png" alt="Logotipo da Empresa" />
-  </div>
+  <div class="logo-slot"><img src="2Wheelsyardpng - Editado.png" alt="Logotipo" /></div>
+  <div class="logo-topo"><img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" /></div>
 
-  <!-- Logotipo principal no topo -->
-  <div class="logo-topo">
-    <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
-  </div>
-
-  <!-- Ícone hambúrguer -->
   <div class="hamburger" id="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
   </div>
 
-  <!-- Menu -->
   <nav id="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="shop.html">Shop</a>
     <a href="contact.html">Contact</a>
-
-    <!-- Ícone Instagram -->
     <a href="https://www.instagram.com/2wheelsyard" target="_blank" class="instagram">
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" />
     </a>
   </nav>
 
-  <!-- Script -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
-
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       menu.classList.toggle('show');

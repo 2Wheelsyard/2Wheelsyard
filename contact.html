@@ -29,7 +29,7 @@
       background-attachment: fixed;
     }
 
-    /* ===== LOGO ===== */
+    /* ===== LOGO - IGUAL À SHOP ===== */
     .logo-topo {
       position: fixed;
       top: -500px;
@@ -44,30 +44,25 @@
       filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     }
 
-     /* Menu */
+    /* ===== MENU DESKTOP - IGUAL À SHOP ===== */
     nav {
       position: fixed;
       top: 25px;
-      right: 315px;
-      z-index: 3;
+      right: 50px; /* Sincronizado com a Shop */
+      z-index: 100;
       display: flex;
-      gap: 80px;
-      justify-content: center;
+      gap: 50px;
+      align-items: center;
     }
     nav a {
       color: white;
       text-decoration: none;
-      font-size: 28px;
+      font-size: 24px;
       letter-spacing: 1px;
       font-weight: 500;
       transition: color 0.3s ease;
     }
     nav a:hover { color: #ccc; }
-    }
-
-    nav a:hover {
-      color: #ccc;
-    }
 
     /* ===== HAMBURGER ===== */
     .hamburger {
@@ -77,93 +72,78 @@
       left: 25px;
       width: 35px;
       height: 25px;
-      z-index: 6;
+      z-index: 110;
       cursor: pointer;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .hamburger div {
+      width: 100%;
       height: 4px;
       background: white;
       border-radius: 5px;
       transition: 0.3s;
     }
 
-    .hamburger.active div:nth-child(1) {
-      transform: rotate(45deg) translateY(10px);
-    }
+    .hamburger.active div:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+    .hamburger.active div:nth-child(2) { opacity: 0; }
+    .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
 
-    .hamburger.active div:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active div:nth-child(3) {
-      transform: rotate(-45deg) translateY(-10px);
-    }
-
-    /* ===== CONTACT ===== */
+    /* ===== CONTACT CONTENT ===== */
     .contact {
       position: relative;
-      top: 500px;
+      top: 250px;
       max-width: 600px;
       margin: auto;
       background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
       border-radius: 15px;
       padding: 60px;
       text-align: center;
       z-index: 2;
     }
 
-    .contact h1 {
-      font-size: 90px;
-      margin-bottom: 30px;
-    }
+    .contact h1 { font-size: 90px; margin-bottom: 30px; }
+    .contact p { font-size: 30px; }
 
-    .contact p {
-      font-size: 30px;
+    /* ===== INSTAGRAM NO MENU ===== */
+    .nav-instagram img {
+      width: 35px;
+      height: 35px;
+      filter: invert(1);
+      margin-left: 20px;
+      transition: 0.3s;
+      vertical-align: middle;
     }
-
-    /* ===== INSTAGRAM ===== */
-    .instagram img {
+    
+    /* Instagram no corpo da página Contact */
+    .contact .instagram img {
       width: 50px;
       filter: invert(1);
       transition: 0.3s;
+      margin-top: 20px;
     }
-
-    .instagram:hover img {
-      transform: scale(1.1);
-    }
+    .instagram:hover img { transform: scale(1.1); }
 
     /* ===== TERMS LINK ===== */
     .terms-link {
       text-align: center;
-      margin: 450px 0 40px;
+      margin: 300px 0 40px;
       position: relative;
       z-index: 3;
     }
-
-    .terms-link a {
-      font-size: 22px;
-      color: white;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .terms-link a:hover {
-      text-decoration: underline;
-    }
+    .terms-link a { font-size: 22px; color: white; cursor: pointer; text-decoration: none; }
+    .terms-link a:hover { text-decoration: underline; }
 
     /* ===== MODAL ===== */
     #termsModal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.85);
       z-index: 9999;
     }
-
     #termsBox {
       background: #111;
       max-width: 700px;
@@ -172,80 +152,49 @@
       border-radius: 10px;
       max-height: 80vh;
       overflow-y: auto;
+      border: 1px solid #333;
     }
+    #termsBox button { background: none; border: none; color: white; font-size: 14px; cursor: pointer; float: right; }
 
-    #termsBox button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      float: right;
-    }
-
-    /* ===== MOBILE (CORRIGIDO) ===== */
+    /* ===== MOBILE (IGUAL À SHOP) ===== */
     @media (max-width: 768px) {
+      .hamburger { display: flex; }
 
-      /* MENU MOBILE CENTRADO */
+      .logo-topo {
+        top: -125px;
+        left: 54%;
+        z-index: 10;
+      }
+      .logo-topo img { width: 420px; margin-top: -100px; }
+
       nav {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        gap: 20px;
-        background: rgba(0,0,0,0.9);
-        padding: 25px 40px;
-        border-radius: 12px;
-        top: 80px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        z-index: 5;
-      }
-
-      nav.show {
+        gap: 30px;
+        transition: right 0.4s ease;
         display: flex;
+        z-index: 100;
       }
 
-      nav a {
-        font-size: 24px;
-      }
+      nav.show { right: 0; }
+      nav a { font-size: 26px; }
 
-      .hamburger {
-        display: flex;
-      }
-
-      /* LOGO */
-      .logo-topo img {
-        width: 550px;
-        margin-top: 150px;
-      }
-
-      /* CONTACT – REMOVE OFFSETS ARTIFICIAIS */
       .contact {
         top: 0;
-        margin: 120px auto 40px;
-        width: 90%;
+        margin: 180px auto 40px;
+        width: 85%;
         padding: 30px;
       }
-
-      .contact h1 {
-        font-size: 56px;
-      }
-
-      .contact p {
-        font-size: 20px;
-      }
-
-      /* TERMS VISÍVEL E PRÓXIMO DO CONTEÚDO */
-      .terms-link {
-        margin: 20px 0 30px;
-      }
-
-      #termsBox {
-        width: 90%;
-        margin: 40px auto;
-        font-size: 13px;
-      }
+      .contact h1 { font-size: 50px; }
+      .contact p { font-size: 20px; }
+      .terms-link { margin: 20px 0 30px; }
     }
   </style>
 </head>
@@ -256,16 +205,19 @@
   <div></div><div></div><div></div>
 </div>
 
+<div class="logo-topo">
+  <img src="2WheelsyardIrageitalic.png" alt="Logotipo">
+</div>
+
 <nav id="menu">
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
   <a href="shop.html">Shop</a>
   <a href="contact.html">Contact</a>
+  <a href="https://www.instagram.com/2wheelsyard" target="_blank" class="nav-instagram">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+  </a>
 </nav>
-
-<div class="logo-topo">
-  <img src="2WheelsyardIrageitalic.png">
-</div>
 
 <div class="contact">
   <h1>Get in touch</h1>
@@ -286,13 +238,13 @@
   <div id="termsBox">
     <button id="closeTerms">Close</button>
     <h2>Terms & Conditions</h2>
-    <p>Terms & Conditions
+    <p style="white-space: pre-line;">
+      Terms & Conditions
 
 Last updated: January 2026
 
 Welcome to 2Wheelsyard.
-By accessing or using this website (www.2wheelsyard.com
-), you agree to the following Terms & Conditions. If you do not agree with any part of these terms, please do not use this website.
+By accessing or using this website (www.2wheelsyard.com), you agree to the following Terms & Conditions. If you do not agree with any part of these terms, please do not use this website.
 
 1. About 2Wheelsyard
 
@@ -380,7 +332,8 @@ For any questions regarding these Terms & Conditions, please contact:
 
 📧 2wheelsyard@gmail.com
 
-🌐 www.2wheelsyard.com</p>
+🌐 www.2wheelsyard.com
+    </p>
   </div>
 </div>
 
@@ -393,12 +346,26 @@ For any questions regarding these Terms & Conditions, please contact:
     menu.classList.toggle("show");
   };
 
+  // Fechar menu ao clicar num link (bom para mobile)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.onclick = () => {
+      hamburger.classList.remove("active");
+      menu.classList.remove("show");
+    }
+  });
+
   document.getElementById("openTerms").onclick = () => {
     document.getElementById("termsModal").style.display = "block";
   };
 
   document.getElementById("closeTerms").onclick = () => {
     document.getElementById("termsModal").style.display = "none";
+  };
+
+  window.onclick = (event) => {
+    if (event.target == document.getElementById("termsModal")) {
+      document.getElementById("termsModal").style.display = "none";
+    }
   };
 </script>
 
