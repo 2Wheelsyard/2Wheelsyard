@@ -350,7 +350,7 @@
     <div class="product">
       <div class="product-image-wrapper">
         <img src="Shooting 2.jpg" alt="CP2-Inspired Engine Design Pullover" />
-        <div class="expand-icon" onclick="openGallery(event, 2)">⤢</div>
+        <div class="expand-icon" onclick="openGallery(event, 0)">⤢</div>
       </div>
       <h3>CP2-Inspired Engine Design Pullover</h3>
       <p>48,35€</p>
@@ -373,7 +373,7 @@
     <div class="product">
       <div class="product-image-wrapper">
         <img src="IMG_3603.jpeg" alt="CRF 300 Rally/L Tail tidy" />
-        <div class="expand-icon" onclick="openGallery(event, 0)">⤢</div>
+        <div class="expand-icon" onclick="openGallery(event, 1)">⤢</div>
       </div>
       <h3>CRF 300 Rally/L Tail tidy</h3>
       <p>22,50€</p>
@@ -389,7 +389,7 @@
     <div class="product">
       <div class="product-image-wrapper">
         <img src="2Wheelsyard V2.jpg" alt="3D Print on demand" />
-        <div class="expand-icon" onclick="openGallery(event, 1)">⤢</div>
+        <div class="expand-icon" onclick="openGallery(event, 2)">⤢</div>
       </div>
       <h3>3D Print on demand</h3>
       <p>15,75€</p>
@@ -399,7 +399,9 @@
       </div>
       <span class="see-more">See more</span>
     </div>
-  </div>
+    
+</div>
+
 
   <div id="emailPopup">
     <div class="popup-box">
@@ -469,9 +471,9 @@
 
     // GALLERY LOGIC
     const productImages = [
-      ["CRF300 tailtidy img2.png", "CRF300 tailtidy img1.png", "IMG_3603.jpeg"],
-      ["2Wheelsyard V2.jpg"],
-      ["Shooting 2.jpg", "Preview1.jpg", "Preview2.jpg"]
+    ["Shooting 2.jpg", "Preview1.jpg", "Preview2.jpg"],  
+    ["CRF300 tailtidy img2.png", "CRF300 tailtidy img1.png", "IMG_3603.jpeg"],
+    ["2Wheelsyard V2.jpg"],
     ];
     let currentProduct = 0;
     let currentImageIndex = 0;
