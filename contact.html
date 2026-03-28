@@ -160,12 +160,32 @@ nav a:hover {
     .terms-link a:hover { text-decoration: underline; }
 
     /* ===== MODAL ===== */
-    #termsModal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 9999;
+   #termsModal, #legalModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+}
+     .modalBox {
+  background: #111;
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 30px;
+  border-radius: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #333;
+}
+
+.modalBox button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  float: right;
+}
     }
     #termsBox {
       background: #111;
@@ -253,110 +273,180 @@ We’re actively looking for partners and brands to grow with us.</p>
 </div>
 
 <div class="terms-link">
-  <a id="openTerms">Terms & Conditions</a>
+  <a id="openTerms">Terms & Conditions</a><br>
+ <a id="openLegal">Legal Notice</a>
 </div>
 
 <div id="termsModal">
-  <div id="termsBox">
+ <div class="modalBox">
     <button id="closeTerms">Close</button>
     <h2>Terms & Conditions</h2>
     <p style="white-space: pre-line;">
       Terms & Conditions
 
-Last updated: January 2026
+Last updated: March 2026
 
 Welcome to 2Wheelsyard.
-By accessing or using this website (www.2wheelsyard.com), you agree to the following Terms & Conditions. If you do not agree with any part of these terms, please do not use this website.
 
-1. About 2Wheelsyard
+By accessing or using this website ([www.2wheelsyard.com](http://www.2wheelsyard.com)), you agree to the following Terms & Conditions.
 
-2Wheelsyard is an independent, small-scale project created by a motorcycle enthusiast.
-This website is used to showcase products, ideas, and custom projects related to motorcycles and 3D printing.
+---
 
-2Wheelsyard is not a registered company, not an official brand of any motorcycle manufacturer, and does not represent or claim any affiliation with Honda, Yamaha, or any other brand.
+## 1. About 2Wheelsyard
 
-2. Products & Services
+2Wheelsyard Rally Team ASBL is a non-profit association based in Luxembourg.
 
-All products presented on this website are:
+The association promotes motorsport activities and participates in rally and off-road events.
 
-Designed independently
+This website is used to showcase and sell products related to the association’s activities.
 
-Produced in small quantities or on demand
+2Wheelsyard is not affiliated with Honda, Yamaha, or any other motorcycle manufacturer.
 
-Intended for motorcycle enthusiasts
+---
 
-Some products may be custom-made or 3D printed and may show small variations in finish, color, or texture. These variations are normal and not considered defects.
+## 2. Products
 
-3. Orders & Availability
+Products offered on this website:
 
-Products are generally produced on demand.
-Availability, pricing, and delivery times may vary and are communicated individually via private message or email.
+* Are designed independently
+* May be produced in small quantities or on demand
+* Are intended for motorsport enthusiasts
 
-Placing an order implies acceptance of these Terms & Conditions.
+Some products may be custom-made or 3D printed and may show minor variations in finish, color, or texture. These variations are normal and not considered defects.
 
-4. Use of Motorcycle Parts
+---
 
-Motorcycle parts and accessories sold or presented on this site are intended for off-road or personal use unless stated otherwise.
+## 3. Orders
+
+Orders made via this website are subject to manual confirmation.
+
+The customer will be contacted by email to confirm:
+
+* availability
+* price
+* delivery details
+
+An order is considered confirmed only after payment is received.
+
+---
+
+## 4. Prices & Payment
+
+All prices are indicated in euros (€).
+
+The association is not subject to VAT.
+
+Payment is made by bank transfer to the association’s account.
+
+---
+
+## 5. Shipping
+
+Shipping conditions and costs are communicated during order confirmation.
+
+---
+
+## 6. Returns
+
+Returns are accepted within 14 days after delivery, provided the product is unused and in its original condition.
+
+---
+
+## 7. Use of Products
+
+Products are intended for motorsport or personal use.
 
 The user is fully responsible for:
 
-Correct installation
+* proper installation
+* compliance with local laws
+* safe use
 
-Compliance with local road laws and regulations
+2Wheelsyard Rally Team ASBL cannot be held responsible for damages resulting from improper use.
 
-Safe use of the product
+---
 
-2Wheelsyard cannot be held responsible for damages, accidents, or legal issues resulting from improper installation or use.
+## 8. Intellectual Property
 
-5. Intellectual Property
+All content on this website (designs, images, text, logos) is the property of 2Wheelsyard Rally Team ASBL unless stated otherwise.
 
-All content on this website, including:
+Unauthorized use is prohibited.
 
-Designs
+---
 
-Images
+## 9. External Links
 
-Text
+This website may contain links to external platforms (such as Etsy or social media).
 
-Logos
+The association has no control over these platforms and accepts no responsibility for their content.
 
-is the property of 2Wheelsyard unless stated otherwise.
+---
 
-Unauthorized reproduction, copying, or commercial use without permission is not allowed.
+## 10. Liability
 
-6. External Links
+The website is provided “as is”.
 
-This website may contain links to external platforms (such as Shopify or social media).
-2Wheelsyard has no control over the content or policies of those external websites and accepts no responsibility for them.
+To the extent permitted by law, the association shall not be liable for:
 
-7. Limitation of Liability
+* indirect damages
+* loss of data or income
+* damages resulting from product use
 
-2Wheelsyard is provided “as is” and without warranties of any kind.
+---
 
-To the maximum extent permitted by law, 2Wheelsyard shall not be liable for:
+## 11. Changes
 
-Any indirect or consequential damages
+These Terms may be updated at any time.
 
-Loss of data
+---
 
-Loss of income
+## 12. Governing Law
 
-Motorcycle damage or personal injury
+These Terms are governed by Luxembourg law.
 
-8. Changes to These Terms
+---
 
-These Terms & Conditions may be updated at any time without prior notice.
-Continued use of the website implies acceptance of the updated terms.
+## 13. Contact
 
-9. Contact
+📧 [2wheelsyard@gmail.com](mailto:2wheelsyard@gmail.com)
+🌐 [www.2wheelsyard.com](http://www.2wheelsyard.com)
 
-For any questions regarding these Terms & Conditions, please contact:
+    </p>
 
-📧 2wheelsyard@gmail.com
+  </div>
+</div>
+<div id="legalModal">
+  <div class="modalBox">
+    <button id="closeLegal">Close</button>
+    <h2>Legal Notice</h2>
+    <p style="white-space: pre-line;">
+<strong>2Wheelsyard Rally Team ASBL</strong><br>
+48, Munnereferstrooss<br>
+L-5750 Frisange<br>
+Luxembourg<br><br>
 
-🌐 www.2wheelsyard.com
+<strong>Responsible for publication:</strong> Pedro Costa<br><br>
+
+<strong>Email:</strong> 2Wheelsyard@gmail.com<br><br>
+
+Association without profit purpose promoting motorsport activities and participation in events.<br><br>
+
+Products are sold by 2Wheelsyard Rally Team ASBL.<br><br>
+
+<strong>Order process:</strong><br>
+Orders are manually validated. Customers are contacted by email to finalize the purchase.<br><br>
+
+<strong>Hosting:</strong><br>
+Netlify, Inc.<br>
+44 Montgomery Street, Suite 300<br>
+San Francisco, California 94104<br>
+USA<br><br>
+
+<strong>Governing law:</strong> Luxembourg
     </p>
   </div>
+</div>
+
 </div>
 
 <script>
@@ -389,6 +479,19 @@ For any questions regarding these Terms & Conditions, please contact:
       document.getElementById("termsModal").style.display = "none";
     }
   };
+  document.getElementById("openLegal").onclick = () => {
+  document.getElementById("legalModal").style.display = "block";
+};
+
+document.getElementById("closeLegal").onclick = () => {
+  document.getElementById("legalModal").style.display = "none";
+};
+
+window.addEventListener("click", (event) => {
+  if (event.target == document.getElementById("legalModal")) {
+    document.getElementById("legalModal").style.display = "none";
+  }
+});
 </script>
 
 </body>
