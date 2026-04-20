@@ -392,7 +392,7 @@ nav a:hover {
 
     <div class="product">
       <div class="product-image-wrapper">
-        <img src="IMG_3603.jpeg" alt="CRF 300 Rally/L Tail tidy" />
+        <img src="IMG_4505.PNG" alt="CRF 300 Rally/L Tail tidy" />
         <div class="expand-icon" onclick="openGallery(event, 1)">⤢</div>
       </div>
       <h3>CRF 300 Rally/L Tail tidy</h3>
@@ -419,7 +419,29 @@ nav a:hover {
       </div>
       <span class="see-more">See more</span>
     </div>
-    
+    <div class="product">
+  <div class="product-image-wrapper">
+    <img src="IMG_4421.jpeg" alt="Linkage Protection" />
+    <div class="expand-icon" onclick="openGallery(event, 3)">⤢</div>
+  </div>
+  <h3>Linkage Protection</h3>
+  <p>11,99€</p>
+  <div class="description">
+    Fabricated for maximum durability in On/OFF-road conditions.<br><br>
+
+Designed to protect the rear suspension linkage from impacts, rocks, and debris, one of the most exposed components on the Yamaha Ténéré.<br><br>
+
+
+Direct fitment — 2 wholes need to be drilles in the bashplate.<br><br>
+
+
+For further details or custom options, feel free to contact us.<br><br>
+ 
+  </div>
+  <span class="see-more">See more</span>
+</div>
+
+
 </div>
 
 
@@ -452,7 +474,14 @@ nav a:hover {
           </select>
         </div>
       </div>
-
+<div id="fitGroup" class="form-group" style="display:none;">
+  <label>Fit</label>
+  <select id="fitSelect">
+    <option value="">Select</option>
+    <option value="Oversized">Oversized</option>
+    <option value="Regular">Regular</option>
+  </select>
+</div>
       <div class="popup-section-title">Shipping Details</div>
       
       <div class="form-group">
@@ -474,7 +503,7 @@ nav a:hover {
         <button class="btn-main" onclick="sendEmail()">Send Inquiry</button>
         <div class="btn-secondary-row">
           <button class="btn-outline" onclick="closeEmailPopup()">Back to Shop</button>
-          <button class="btn-shopify" onclick="redirectToShopify()">Go to Shopify</button>
+          <button class="btn-shopify" onclick="redirectToShopify()">Go to ETSY</button>
         </div>
       </div>
     </div>
@@ -492,8 +521,10 @@ nav a:hover {
     // GALLERY LOGIC
     const productImages = [
     ["Shooting 2.jpg", "Preview1.jpg", "Preview2.jpg"],  
-    ["CRF300 tailtidy img2.png", "CRF300 tailtidy img1.png", "IMG_3603.jpeg"],
+    ["IMG_4505.PNG", "IMG_3603.jpeg"],
     ["2Wheelsyard V2.jpg"],
+    ["IMG_4421.jpeg", "IMG_4423.jpeg", "IMG_4506.PNG"]
+
     ];
     let currentProduct = 0;
     let currentImageIndex = 0;
@@ -536,12 +567,17 @@ nav a:hover {
 
     // EMAIL LOGIC
     const sizeKeywords = ["pullover", "hoodie", "sweatshirt", "tshirt", "shirt", "jersey", "apparel", "wear", "top", "sweater"];
+function openEmailPopup(slotName) {
+  document.getElementById("emailSubject").value = slotName;
+  document.getElementById("emailPopup").style.display = "flex";
 
-    function openEmailPopup(slotName) {
-      document.getElementById("emailSubject").value = slotName;
-      document.getElementById("emailPopup").style.display = "flex";
-      const hasSize = sizeKeywords.some(kw => slotName.toLowerCase().includes(kw));
-      document.getElementById("sizeGroup").style.display = hasSize ? "block" : "none";
+  const hasSize = sizeKeywords.some(kw => slotName.toLowerCase().includes(kw));
+  document.getElementById("sizeGroup").style.display = hasSize ? "block" : "none";
+
+  const isPullover = slotName.toLowerCase().includes("pullover");
+  document.getElementById("fitGroup").style.display = isPullover ? "block" : "none";
+
+
     }
 
     function closeEmailPopup() { document.getElementById("emailPopup").style.display = "none"; }
@@ -555,9 +591,16 @@ nav a:hover {
       const qty = document.getElementById("quantitySelect").value;
       const msg = document.getElementById("emailMessage").value;
       const address = `${document.getElementById("shipStreet").value}, ${document.getElementById("shipPostal").value} ${document.getElementById("shipCity").value}, ${document.getElementById("shipCountry").value}`;
-      
-      const composed = `Product: ${subject}\nSize: ${size}\nQty: ${qty}\nAddress: ${address}\n\nMessage:\n${msg}`;
+      const fit = document.getElementById("fitSelect").value;
 
+      const composed = `Product: ${subject}
+      Size: ${size}
+      Fit: ${fit}
+      Qty: ${qty}
+      Address: ${address}
+
+      Message:
+      ${msg}`;
       fetch("/.netlify/functions/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
