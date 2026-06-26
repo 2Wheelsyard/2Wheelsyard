@@ -14,7 +14,7 @@ export async function handler(event) {
     }
 
     const emailData = {
-      from: "2Wheelsyard <no-reply@2wheelsyard.com>",
+      from: "onboarding@resend.dev", // TEMP para teste
       to: "2wheelsyard@gmail.com",
       subject: "New shop request: " + subject,
       text:
@@ -32,18 +32,19 @@ export async function handler(event) {
       body: JSON.stringify(emailData)
     });
 
-    const data = await response.json();
+    const text = await response.text();
 
     console.log("Resend status:", response.status);
-    console.log("Resend body:", data);
+    console.log("Resend response:", text);
 
     if (response.ok) {
       return { statusCode: 200, body: "OK" };
     } else {
-      return { statusCode: 500, body: "ERROR" };
+      return { statusCode: 500, body: text };
     }
+
   } catch (error) {
     console.log("SendEmail ERROR:", error);
-    return { statusCode: 500, body: "ERROR" };
+    return { statusCode: 500, body: error.toString() };
   }
 }
