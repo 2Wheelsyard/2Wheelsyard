@@ -8,10 +8,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-
     html {
-  overflow-y: scroll; /* Força a presença da barra de scroll mesmo que não haja conteúdo suficiente */
-}
+      overflow-y: scroll;
+    }
+
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
@@ -33,7 +33,7 @@
       background-attachment: fixed;
     }
 
-    /* ===== LOGO - IGUAL À SHOP ===== */
+    /* LOGO */
     .logo-topo {
       position: fixed;
       top: -500px;
@@ -45,49 +45,49 @@
 
     .logo-topo img {
       width: 750px;
+      height: auto;
       filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     }
 
-    /* ===== MENU DESKTOP - IGUAL À SHOP ===== */
-   /* ====== NAV (Substitui este bloco em todas as páginas) ====== */
-nav {
-  position: fixed;
-  top: 25px;
-  right: 50px;
-  z-index: 100;
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  /* Removido o justify-content que estava no about */
-}
+    /* MENU DESKTOP */
+    nav {
+      position: fixed;
+      top: 25px;
+      right: 50px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      align-items: center;
+      visibility: visible;
+      opacity: 1;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  /* Removi o letter-spacing: 1px; que empurrava o menu para a esquerda */
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-nav a:hover { 
-  color: #ccc; 
-}
+    nav a:hover {
+      color: #ccc;
+    }
 
-.instagram img {
-  width: 35px;
-  height: 35px;
-  filter: invert(1);
-  transition: transform 0.3s ease;
-  vertical-align: middle;
-  /* Removido o margin-left que estava no about */
-}
+    .instagram img {
+      width: 35px;
+      height: 35px;
+      filter: invert(1);
+      transition: transform 0.3s ease;
+      vertical-align: middle;
+    }
 
-.instagram:hover img { 
-  transform: scale(1.2); 
-}
+    .instagram:hover img {
+      transform: scale(1.1);
+    }
 
-    /* ===== HAMBURGER ===== */
+    /* HAMBURGER */
     .hamburger {
       display: none;
       position: fixed;
@@ -95,7 +95,7 @@ nav a:hover {
       left: 25px;
       width: 35px;
       height: 25px;
-      z-index: 110;
+      z-index: 1100;
       cursor: pointer;
       flex-direction: column;
       justify-content: space-between;
@@ -109,84 +109,102 @@ nav a:hover {
       transition: 0.3s;
     }
 
-    .hamburger.active div:nth-child(1) { transform: rotate(45deg) translateY(10px); }
-    .hamburger.active div:nth-child(2) { opacity: 0; }
-    .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translateY(10px);
+    }
 
-    /* ===== CONTACT CONTENT ===== */
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translateY(-10px);
+    }
+
+    /* CONTACT CONTENT */
     .contact {
       position: relative;
       top: 250px;
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto;
       background: rgba(0,0,0,0.3);
       backdrop-filter: blur(4px);
       border-radius: 15px;
       padding: 60px;
       text-align: center;
       z-index: 2;
+      box-sizing: content-box;
     }
 
-    .contact h1 { font-size: 70px; margin-bottom: 30px; }
-    .contact p { font-size: 20px; }
-
-    /* ===== INSTAGRAM NO MENU ===== */
-    .nav-instagram img {
-      width: 35px;
-      height: 35px;
-      filter: invert(1);
-      margin-left: 20px;
-      transition: 0.3s;
-      vertical-align: middle;
+    .contact h1 {
+      font-size: 70px;
+      margin-bottom: 30px;
     }
-    
-    /* Instagram no corpo da página Contact */
+
+    .contact p {
+      font-size: 20px;
+    }
+
+    /* INSTAGRAM IN CONTACT */
     .contact .instagram img {
       width: 50px;
+      height: 50px;
       filter: invert(1);
-      transition: 0.3s;
       margin-top: 20px;
     }
-    .instagram:hover img { transform: scale(1.1); }
 
-    /* ===== TERMS LINK ===== */
+    /* TERMS AND LEGAL LINKS */
     .terms-link {
       text-align: center;
       margin: 300px 0 40px;
       position: relative;
       z-index: 3;
     }
-    .terms-link a { font-size: 22px; color: white; cursor: pointer; text-decoration: none; }
-    .terms-link a:hover { text-decoration: underline; }
 
-    /* ===== MODAL ===== */
-   #termsModal, #legalModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999;
-}
-     .modalBox {
-  background: #111;
-  max-width: 700px;
-  margin: 80px auto;
-  padding: 30px;
-  border-radius: 10px;
-  max-height: 80vh;
-  overflow-y: auto;
-  border: 1px solid #333;
-}
-
-.modalBox button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  float: right;
-}
+    .terms-link a {
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
     }
+
+    .terms-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* MODALS */
+    #termsModal,
+    #legalModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .modalBox {
+      background: #111;
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 10px;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 1px solid #333;
+      box-sizing: border-box;
+    }
+
+    .modalBox button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      float: right;
+    }
+
     #termsBox {
       background: #111;
       max-width: 700px;
@@ -197,109 +215,156 @@ nav a:hover {
       overflow-y: auto;
       border: 1px solid #333;
     }
-    #termsBox button { background: none; border: none; color: white; font-size: 14px; cursor: pointer; float: right; }
 
-    /* ===== MOBILE (IGUAL À SHOP) ===== */
+    #termsBox button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      float: right;
+    }
+
+    /* MOBILE */
     @media (max-width: 768px) {
-      .hamburger { display: flex; }
-
-     .logo-topo {
-  top: -125px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.logo-topo img {
-  width: 420px;
-  height: auto;
-  margin-top: -100px;
-}
+      .hamburger {
+        display: flex;
       }
-      .logo-topo img { width: 420px; margin-top: -100px; }
+
+      .logo-topo {
+        top: -125px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo-topo img {
+        width: 420px;
+        height: auto;
+        margin-top: -100px;
+      }
 
       nav {
         position: fixed;
-        top: 0;
-        right: -100%; /* Escondido */
+        inset: 0;
         width: 100%;
         height: 100vh;
+        box-sizing: border-box;
         background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 30px;
-        transition: right 0.4s ease;
         display: flex;
-        z-index: 100;
+        right: auto;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        z-index: 1000;
       }
 
-      nav.show { right: 0; }
-      nav a { font-size: 26px; }
+      nav.show {
+        transform: translateX(0);
+      }
+
+      nav a {
+        font-size: 26px;
+      }
 
       .contact {
         top: 0;
         margin: 180px auto 40px;
         width: 85%;
+        max-width: none;
         padding: 30px;
+        box-sizing: border-box;
       }
-      .contact h1 { font-size: 50px; }
-      .contact p { font-size: 20px; }
-      .terms-link { margin: 20px 0 30px; }
+
+      .contact h1 {
+        font-size: 50px;
+      }
+
+      .contact p {
+        font-size: 20px;
+      }
+
+      .terms-link {
+        margin: 20px 0 30px;
+      }
+
+      .terms-link a {
+        font-size: 18px;
+      }
+
+      .modalBox {
+        margin: 40px auto;
+        padding: 20px;
+        max-height: 85vh;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="hamburger" id="hamburger">
-  <div></div><div></div><div></div>
-</div>
+  <div class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-<div class="logo-topo">
-  <img src="2WheelsyardIrageitalic.png" alt="Logotipo">
-</div>
+  <div class="logo-topo">
+    <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard">
+  </div>
 
-<nav id="menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="shop.html">Shop</a>
-  <a href="contact.html">Contact</a>
-  <a href="https://www.instagram.com/2wheelsyard" target="_blank" class="instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
-</nav>
+  <nav id="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.instagram.com/2wheelsyard"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+    </a>
+  </nav>
 
-<div class="contact">
-  <h1>Get in touch</h1>
-  <p>📍Luxembourg</p>
-  <p>📧 2wheelsyard@gmail.com</p>
-  <p>Want to be part of our journey?
-We’re actively looking for partners and brands to grow with us.</p>
+  <div class="contact">
+    <h1>Get in touch</h1>
+    <p>📍Luxembourg</p>
+    <p>📧 2wheelsyard@gmail.com</p>
+    <p>
+      Want to be part of our journey?
+      We’re actively looking for partners and brands to grow with us.
+    </p>
 
-  <a href="https://www.instagram.com/2wheelsyard" target="_blank" class="instagram">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg">
-  </a>
-</div>
+    <a href="https://www.instagram.com/2wheelsyard"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+    </a>
+  </div>
 
-<div class="terms-link">
-  <a id="openTerms">Terms & Conditions</a><br>
- <a id="openLegal">Legal Notice</a>
-</div>
+  <div class="terms-link">
+    <a id="openTerms">Terms &amp; Conditions</a><br>
+    <a id="openLegal">Legal Notice</a>
+  </div>
 
-<div id="termsModal">
- <div class="modalBox">
-    <button id="closeTerms">Close</button>
-    <h2>Terms & Conditions</h2>
-    <p style="white-space: pre-line;">
-      Terms & Conditions
+  <div id="termsModal">
+    <div class="modalBox">
+      <button id="closeTerms">Close</button>
+      <h2>Terms &amp; Conditions</h2>
+      <p style="white-space: pre-line;">Terms &amp; Conditions
 
 Last updated: March 2026
 
 Welcome to 2Wheelsyard.
 
-By accessing or using this website ([www.2wheelsyard.com](http://www.2wheelsyard.com)), you agree to the following Terms & Conditions.
+By accessing or using this website (www.2wheelsyard.com), you agree to the following Terms &amp; Conditions.
 
 ---
 
-## 1. About 2Wheelsyard
+1. About 2Wheelsyard
 
 2Wheelsyard Rally Team ASBL is a non-profit association based in Luxembourg.
 
@@ -311,7 +376,7 @@ This website is used to showcase and sell products related to the association’
 
 ---
 
-## 2. Products
+2. Products
 
 Products offered on this website:
 
@@ -323,7 +388,7 @@ Some products may be custom-made or 3D printed and may show minor variations in 
 
 ---
 
-## 3. Orders
+3. Orders
 
 Orders made via this website are subject to manual confirmation.
 
@@ -337,7 +402,7 @@ An order is considered confirmed only after payment is received.
 
 ---
 
-## 4. Prices & Payment
+4. Prices &amp; Payment
 
 All prices are indicated in euros (€).
 
@@ -347,19 +412,19 @@ Payment is made by bank transfer to the association’s account.
 
 ---
 
-## 5. Shipping
+5. Shipping
 
 Shipping conditions and costs are communicated during order confirmation.
 
 ---
 
-## 6. Returns
+6. Returns
 
 Returns are accepted within 14 days after delivery, provided the product is unused and in its original condition.
 
 ---
 
-## 7. Use of Products
+7. Use of Products
 
 Products are intended for motorsport or personal use.
 
@@ -373,7 +438,7 @@ The user is fully responsible for:
 
 ---
 
-## 8. Intellectual Property
+8. Intellectual Property
 
 All content on this website (designs, images, text, logos) is the property of 2Wheelsyard Rally Team ASBL unless stated otherwise.
 
@@ -381,7 +446,7 @@ Unauthorized use is prohibited.
 
 ---
 
-## 9. External Links
+9. External Links
 
 This website may contain links to external platforms (such as Etsy or social media).
 
@@ -389,7 +454,7 @@ The association has no control over these platforms and accepts no responsibilit
 
 ---
 
-## 10. Liability
+10. Liability
 
 The website is provided “as is”.
 
@@ -401,105 +466,112 @@ To the extent permitted by law, the association shall not be liable for:
 
 ---
 
-## 11. Changes
+11. Changes
 
 These Terms may be updated at any time.
 
 ---
 
-## 12. Governing Law
+12. Governing Law
 
 These Terms are governed by Luxembourg law.
 
 ---
 
-## 13. Contact
+13. Contact
 
-📧 [2wheelsyard@gmail.com](mailto:2wheelsyard@gmail.com)
-🌐 [www.2wheelsyard.com](http://www.2wheelsyard.com)
-
-    </p>
-
+2wheelsyard@gmail.com
+www.2wheelsyard.com
+      </p>
+    </div>
   </div>
-</div>
-<div id="legalModal">
-  <div class="modalBox">
-    <button id="closeLegal">Close</button>
-    <h2>Legal Notice</h2>
-    <p style="white-space: pre-line;">
-<strong>2Wheelsyard Rally Team ASBL</strong><br>
-48, Munnereferstrooss<br>
-L-5750 Frisange<br>
-Luxembourg<br><br>
 
-<strong>Responsible for publication:</strong> Pedro Costa<br><br>
+  <div id="legalModal">
+    <div class="modalBox">
+      <button id="closeLegal">Close</button>
+      <h2>Legal Notice</h2>
+      <p style="white-space: pre-line;">
+2Wheelsyard Rally Team ASBL
 
-<strong>Email:</strong> 2Wheelsyard@gmail.com<br><br>
+48, Munnereferstrooss
+L-5750 Frisange
+Luxembourg
 
-Association without profit purpose promoting motorsport activities and participation in events.<br><br>
+Responsible for publication: Pedro Costa
 
-Products are sold by 2Wheelsyard Rally Team ASBL.<br><br>
+Email: 2Wheelsyard@gmail.com
 
-<strong>Order process:</strong><br>
-Orders are manually validated. Customers are contacted by email to finalize the purchase.<br><br>
+Association without profit purpose promoting motorsport activities and participation in events.
 
-<strong>Hosting:</strong><br>
-Netlify, Inc.<br>
-44 Montgomery Street, Suite 300<br>
-San Francisco, California 94104<br>
-USA<br><br>
+Products are sold by 2Wheelsyard Rally Team ASBL.
 
-<strong>Governing law:</strong> Luxembourg
-    </p>
+Order process:
+Orders are manually validated. Customers are contacted by email to finalize the purchase.
+
+Hosting:
+Netlify, Inc.
+44 Montgomery Street, Suite 300
+San Francisco, California 94104
+USA
+
+Governing law: Luxembourg
+      </p>
+    </div>
   </div>
-</div>
 
-</div>
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
 
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const menu = document.getElementById("menu");
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      menu.classList.toggle("show");
 
-  hamburger.onclick = () => {
-    hamburger.classList.toggle("active");
-    menu.classList.toggle("show");
-  };
+      hamburger.setAttribute(
+        "aria-expanded",
+        hamburger.classList.contains("active") ? "true" : "false"
+      );
+    });
 
-  // Fechar menu ao clicar num link (bom para mobile)
-  document.querySelectorAll('nav a').forEach(link => {
-    link.onclick = () => {
-      hamburger.classList.remove("active");
-      menu.classList.remove("show");
-    }
-  });
+    // Fechar o menu ao selecionar um link
+    document.querySelectorAll("#menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        menu.classList.remove("show");
+        hamburger.setAttribute("aria-expanded", "false");
+      });
+    });
 
-  document.getElementById("openTerms").onclick = () => {
-    document.getElementById("termsModal").style.display = "block";
-  };
+    // Terms & Conditions
+    document.getElementById("openTerms").addEventListener("click", () => {
+      document.getElementById("termsModal").style.display = "block";
+    });
 
-  document.getElementById("closeTerms").onclick = () => {
-    document.getElementById("termsModal").style.display = "none";
-  };
-
-  window.onclick = (event) => {
-    if (event.target == document.getElementById("termsModal")) {
+    document.getElementById("closeTerms").addEventListener("click", () => {
       document.getElementById("termsModal").style.display = "none";
-    }
-  };
-  document.getElementById("openLegal").onclick = () => {
-  document.getElementById("legalModal").style.display = "block";
-};
+    });
 
-document.getElementById("closeLegal").onclick = () => {
-  document.getElementById("legalModal").style.display = "none";
-};
+    // Legal Notice
+    document.getElementById("openLegal").addEventListener("click", () => {
+      document.getElementById("legalModal").style.display = "block";
+    });
 
-window.addEventListener("click", (event) => {
-  if (event.target == document.getElementById("legalModal")) {
-    document.getElementById("legalModal").style.display = "none";
-  }
-});
-</script>
+    document.getElementById("closeLegal").addEventListener("click", () => {
+      document.getElementById("legalModal").style.display = "none";
+    });
+
+    // Fechar modais ao clicar fora
+    window.addEventListener("click", (event) => {
+      if (event.target === document.getElementById("termsModal")) {
+        document.getElementById("termsModal").style.display = "none";
+      }
+
+      if (event.target === document.getElementById("legalModal")) {
+        document.getElementById("legalModal").style.display = "none";
+      }
+    });
+  </script>
 
 </body>
 </html>
+```
