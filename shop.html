@@ -32,8 +32,8 @@
 
     /* ====== LOGO TOPO ====== */
     .logo-topo {
-      position: fixed;
-      top: -500px;
+      position: absolute;
+      top: -800px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 5;
@@ -166,8 +166,26 @@ nav a:hover {
     }
     .expand-icon:hover { background: rgba(8, 8, 8, 0.8); }
 
-    .product h3 { font-size: 25px; margin: 10px 0 5px; }
-    .description { max-height: 40px; overflow: hidden; transition: max-height 0.4s ease; font-size: 18px; line-height: 1.4; color: #e0e0e0; flex-grow: 1; }
+    .product h3 {
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+    margin: 12px 0 6px;
+}
+    .description {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.product.active .description {
+    display: block;
+    max-height: 5000px;
+}
     .product.active .description { max-height: 5000px; }
     .see-more { display: inline-block; margin-top: 10px; font-size: 18px; color: #ccc; cursor: pointer; text-decoration: underline; }
 
@@ -311,7 +329,10 @@ nav a:hover {
       body { overflow-y: auto; }
       .hamburger { display: flex; }
       .logo-topo {
-  top: -125px;
+      .product h3 {
+    font-size: 18px;
+}
+  top: -300px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -379,16 +400,17 @@ nav a:hover {
   <div class="shop">
     <div class="product">
       <div class="product-image-wrapper">
-        <img src="Shooting 2.jpg" alt="CP2-Inspired Engine Design Pullover" />
+        <img src="unisex-organic-sweatshirt-black-front-6adcca3210946.png" />
         <div class="expand-icon" onclick="openGallery(event, 0)">⤢</div>
       </div>
-      <h3>CP2-Inspired Engine Design Sweatshirt</h3>
+      <h3>Yamaha CP2 Engine Inspired Design Sweatshirt</h3>
       <p>48,40€</p>
       <div class="description">
-        CP2-Inspired Engine Design Sweatshirt...<br><br>
-        Designed by me and created for motorcycle enthusiasts who appreciate engineering and aesthetics. This Sweatshirt features an original illustration inspired by the iconic CP2-style parallel twin engine—focused purely on form, mechanics, and passion for motors.<br><br>
+        Yamaha CP2 Engine Inspired Design Sweatshirt<br><br>
+        Designed by me and created for motorcycle enthusiasts who appreciate engineering and aesthetics.<br>
+        This Sweatshirt features an original illustration inspired by the iconic CP2-style parallel twin engine—focused purely on form, mechanics, and passion for motors.<br><br>
         A bold yet minimal design, made to be worn on and off the bike.<br><br>
-        Material & Comfort<br><br>
+        ➖Material & Comfort<br><br>
 - 80% organic cotton, 20% recycled polyester<br><br>
 - Soft and comfortable fabric<br><br>
 - Fabric weight: 280 g/m²<br><br>
@@ -408,29 +430,64 @@ nav a:hover {
         <img src="IMG_4505.PNG" alt="CRF 300 Rally/L Tail tidy" />
         <div class="expand-icon" onclick="openGallery(event, 1)">⤢</div>
       </div>
-      <h3>CRF 300 Rally/L Tail tidy</h3>
+      <h3>CRF 300 Rally / L License Plate Bracket</h3>
       <p>33,00€</p>
       <div class="description">
-        Precision 3D-printed in ASA high-resistance polymer.<br><br>
-        Features integrated license plate light and reflector mounting holes, ensuring full road compliance with a tilt angle under 30°.<br><br>
-        Plug & play — no modifications required.<br><br>
-        Free shipping<br><br>
+        Honda CRF300 Rally / CRF300L License Plate Bracket – Road & Off-Road<br><br>
 
-        For further details or custom options, feel free to contact us.
+Designed specifically for the Honda CRF300 Rally and CRF300L, this license plate bracket combines a clean, minimalist design with practical functionality, tested in both on-road and off-road conditions.<br><br>
+
+Manufactured in PETG HF, it is designed to withstand the demands of everyday riding while maintaining a compact and tidy rear-end appearance.<br><br>
+
+➖ FEATURES<br><br>
+
+- Compatible with original OEM components, including the factory lighting and other original hardware.<br>
+
+- Integrated mounting points for the license plate light and rear reflector.<br>
+
+- Designed for a license plate tilt angle under 30°.<br>
+
+- Plug & play installation — no modifications required.<br>
+
+- Lightweight and compact design.<br><br>
+
+➖ TESTED IN REAL-WORLD CONDITIONS<br><br>
+
+Tested on both road and off-road terrain to ensure reliable performance in a variety of riding conditions.<br><br>
+
+➖ COMPATIBILITY<br><br>
+
+- Honda CRF300 Rally<br>
+
+- Honda CRF300L<br><br>
+
+Free Shipping<br><br>
+
+For further details or custom options, feel free to contact us.
       </div>
       <span class="see-more">See more</span>
     </div>
 
     <div class="product">
       <div class="product-image-wrapper">
-        <img src="2Wheelsyard V2.jpg" alt="3D Print on demand" />
+        <img src="8e626219-98c3-4ea5-8364-f7f67bf08c6c.png" alt="3D Print on demand" />
         <div class="expand-icon" onclick="openGallery(event, 2)">⤢</div>
       </div>
-      <h3>3D Print on demand</h3>
-      <p>15,75€</p>
+      <h3>Custom 3D-printed</h3>
+      <p>Custom Pricing</p>
       <div class="description">
-        We create custom 3D printed motorcycle accessories on demand — designed, printed, and tested by riders.
-        For further details, feel free to contact us.
+       
+Custom 3D-printed motorcycle accessories, designed and produced on demand by motorcycle enthusiasts.<br>
+
+From practical upgrades to tailor-made solutions, each part is designed, printed, and tested in real-world conditions.<br><br>
+
+➖ Custom Orders<br><br>
+
+Have an idea or need a specific part? Contact us to discuss your project and find the right solution.<br><br>
+
+
+
+Free shipping.<br><br>
       </div>
       <span class="see-more">See more</span>
     </div>
@@ -439,21 +496,36 @@ nav a:hover {
     <img src="IMG_4421.jpeg" alt="Linkage Protection" />
     <div class="expand-icon" onclick="openGallery(event, 3)">⤢</div>
   </div>
-  <h3>Ténéré 700 Linkage Protection</h3>
+  <h3>Yamaha Ténéré 700 – Rear Suspension Linkage Protection
+</h3>
   <p>23,00€</p>
   <div class="description">
-    Fabricated for maximum durability in On/OFF-road conditions.<br><br>
+    Yamaha Ténéré 700 – Rear Suspension Linkage Protection<br><br>
 
-Designed to protect the rear suspension linkage from impacts, rocks, and debris, one of the most exposed components on the Yamaha Ténéré.<br><br>
+➖ Description<br><br>
 
+Designed to protect the rear suspension linkage of the Yamaha Ténéré 700 against impacts, rocks, and debris. This component helps protect one of the most exposed parts of the motorcycle during off-road riding.<br>
 
-Direct fitment — 2 wholes need to be drilles in the bashplate.<br><br>
+Fabricated for maximum durability in both on-road and off-road conditions.<br>
 
-Free shipping<br><br>
+Tested in real-world conditions.<br><br>
 
+➖ Key Features<br><br>
 
-For further details or custom options, feel free to contact us.<br><br>
- 
+- Designed specifically for the Yamaha Ténéré 700.<br>
+- Protects the rear suspension linkage against rocks, impacts, and debris.<br>
+- Durable construction for demanding riding conditions.<br>
+- Suitable for on-road, off-road, and rally use.<br><br>
+
+➖ Installation<br><br>
+
+Direct fitment. Two holes must be drilled in the bash plate for installation.<br><br>
+
+➖ Custom Options<br><br>
+
+For further information or custom options, feel free to contact us.<br><br>
+
+Free shipping.<br><br>
   </div>
   <span class="see-more">See more</span>
 </div>
@@ -465,35 +537,58 @@ For further details or custom options, feel free to contact us.<br><br>
   <h3>Honda Dominator Parts</h3>
   <p>21,00€</p>
   <div class="description">
-    Honda Dominator set of three components:<br><br>
-    <br>- Choke-style housing identical in shape to the original OEM part
-    <br>- Rear indicator mounts for repositioning the turn signals.
-    <br>- Rear reflector bracket.
-    <br><br>Designed to match factory aesthetics while improving mounting flexibility and durability for road and off-road use.<br><br>
-    Free shipping
+    HHonda NX650 Dominator – 3-Piece Accessory Set<br><br>
 
-    <br>
-    <br>
+➖ Description<br><br>
+
+A set of three practical components designed for the Honda NX650 Dominator, combining an OEM-style appearance with improved mounting options.<br>
+
+Tested in real-world conditions to ensure functionality and reliable fitment.<br><br>
+
+➖ What's Included<br><br>
+- Choke-Style Housing: Same shape as the original OEM part for a factory-style finish.<br>
+- Rear Indicator Mounts: Allow repositioning of the rear turn signals.<br>
+- Rear Reflector Bracket: Provides a dedicated mounting point for the rear reflector.<br><br>
+
+➖ Key Features<br><br>
+
+- Designed specifically for the Honda NX650 Dominator.<br>
+- OEM-inspired design that complements the original aesthetics.<br>
+- Improved mounting flexibility.<br>
+- Suitable for road and off-road use.<br><br>
+
+Free shipping.<br><br>
     
   </div>
   <span class="see-more">See more</span>
 </div>
 <div class="product">
   <div class="product-image-wrapper">
-    <img src="Tshirt2.png" alt="Nome do Novo Produto" />
+    <img src="unisex-staple-t-shirt-black-heather-front-and-back-6adccbcad1030.png" />
     <div class="expand-icon" onclick="openGallery(event, 5)">⤢</div>
   </div>
   <h3>2Wheelsyard T-Shirt</h3>
   <p>30,25€</p>
   <div class="description">
-    2WheelsYard T-shirt – More than a style, a project<br><br>
-    By wearing this 2WheelsYard T-shirt, you are not just choosing a garment — you are supporting a project born from a passion for motorcycles, rally raid, and adventure.<br><br>
-    Behind 2WheelsYard is a team of enthusiasts working to grow the motorcycle scene, share experiences, and inspire other riders to get started.<br><br>
-    Every purchase directly helps develop the project, take part in events, and keep this spirit alive.<br><br>
-    Comfortable, versatile, and designed for both riders and everyday use, this T-shirt represents a mindset: freedom, commitment, and passion.<br><br>
+    2WheelsYard T-Shirt – More Than a Style, a Project<br><br>
 
-If you want to support an authentic initiative and ride with us, this T-shirt is made for you.<br><br>
-        Free shipping<br><br>
+➖ Description<br><br>
+
+Created for motorcycle enthusiasts who share a passion for rally raid, adventure, and life on two wheels.<br>
+
+More than just a T-shirt, it represents the 2WheelsYard project and supports our journey to participate in events, share experiences, and inspire other riders.<br>
+
+Wear it, support the project, and be part of the ride.<br><br>
+
+➖ Features<br><br>
+
+Comfortable for everyday wear.<br>
+
+Designed for motorcycle and adventure enthusiasts.<br>
+
+Supports the development of the 2WheelsYard project.<br><br>
+
+Free shipping.<br><br>
 
   </div>
   <span class="see-more">See more</span>
@@ -506,28 +601,37 @@ If you want to support an authentic initiative and ride with us, this T-shirt is
   <h3>Tablet Mount Yamaha Ténéré 700 – Active Tab 2 & 3</h3>
   <p>57,00€</p>
   <div class="description">
-Tablet mount specially designed for the Yamaha Ténéré 700 and compatible with Samsung Galaxy Tab Active2 and Tab Active3.<br><br>
+Yamaha Ténéré 700 Tablet Mount – Samsung Galaxy Active Tab 2 & 3<br><br>
 
-<br><br>Features:<br><br>
+Tablet mount specifically designed for the Yamaha Ténéré 700, tested in real-world conditions during the Bosnia Rally:<br><br> 5 days of intensive off-road riding, rocky tracks, strong vibrations and numerous impacts.<br><br>
 
-- Manufactured from PETG (3D printed).<br>
-- Design developed after several prototypes and improvements<br>
+After several hundred kilometers in tough conditions, the mount stayed perfectly in place — no cracks, no deformation.<br>
+
+<br><br>➖ COMPATIBILITY<br><br>
+Samsung Galaxy Active Tab 2 and Active Tab 3<br>
+Ideal for navigation with DMD2, Rally Navigator, OsmAnd, and similar apps<br>
+
+<br><br>BUILT FOR OFF-ROAD<br><br>
+
+- 3D-printed in PETG<br>
+- Design refined through several prototypes and improvements<br>
 - Robust construction suitable for off-road / rally use<br>
-- Secure tablet hold even on rough terrain<br>
-- Customisation possible on request<br><br>
+- Keeps the tablet firmly in place even on rough terrain<br>
 
-<br><br>The mount has been tested in real conditions during the Bosnia Rally.<br>
-5 days of intense off-road riding, rocky trails, strong vibrations and numerous impacts.<br>
-After several hundred kilometres in demanding conditions, the mount remained perfectly in place, with no cracks or deformation.<br><br>
+<br><br>FIELD-TESTED, NOT JUST LAB-TESTED<br><br>
+Rally-proven durability — put to the test on real rally terrain, not just a workshop bench.<br>
 
-<br><br>For installation, you will also need:<br><br>
+<br><br>➖ WHAT YOU'LL ALSO NEED FOR ASSEMBLY (not included)<br><br>
 
-– 4 × M6 x 75 mm bolts<br>
-– 4 × M6 nuts<br>
-– 2 × M6 x 40 mm bolts<br>
-– Double-sided Velcro<br><br>
-<br><br>Free shipping<br><br>
-Developed and tested by a rider in real-world conditions.<br><br>
+- 4x M6 x 75mm screws<br>
+- 4x M6 nuts<br>
+- 2x M6 x 40mm screws<br>
+- Double-sided Velcro<br>
+
+<br><br>Customization available on request — message us before ordering if you need a variation.<br>
+<br>Free Shipping<br><br>
+
+Developed and tested by a rider, for riders.
     
   </div>
   <span class="see-more">See more</span>
@@ -544,7 +648,7 @@ Developed and tested by a rider in real-world conditions.<br><br>
 Improve your rear brake control when riding off-road with this raised brake pedal extension for the Yamaha Ténéré 700.<br><br>
     
 
-Features:<br><br>
+➖Features:<br><br>
     
 
 - Raises rear brake pedal height for easier access<br>
@@ -553,18 +657,57 @@ Features:<br><br>
 - Simple and secure mounting design<br>
 - Durable construction for harsh environments<br><br>
 
-Why use it:<br><br>
+➖Why use it:<br><br>
     
 
 With the extension installed, you can maintain your body weight further back during braking without needing to stretch your leg to reach the rear brake. This results in better stability, improved control on descents, and a more natural riding posture.<br><br>
 
-Notes:<br><br>
+➖Notes:<br><br>
     
 
 - Designed specifically for Yamaha Ténéré 700<br>
 - Ideal for enduro, trail, and rally use<br>
 - Mounted using 2 zip ties (not included)<br>
-- A small upgrade that makes a noticeable difference in control and riding ergonomics.<br>
+- A small upgrade that makes a noticeable difference in control and riding ergonomics.<br><br>
+
+Free Shipping<br><br>
+
+  </div>
+  <span class="see-more">See more</span>
+</div>
+<div class="product">
+  <div class="product-image-wrapper">
+    <img src="IMG_6283.jpeg" alt="Nome do Novo Produto" />
+    <div class="expand-icon" onclick="openGallery(event, 8)">⤢</div>
+  </div>
+  <h3>Yamaha Ténéré 700 – Handlebar End</h3>
+  <p>10,00€</p>
+  <div class="description">
+    Yamaha Ténéré 700 – Handlebar End<br><br>
+
+➖ Description<br><br>
+
+Bar end designed for Yamaha Ténéré 700 handlebars. Protects the handlebar ends against impacts and wear while providing a clean, functional finish.<br>
+
+Tested in real-world conditions and suitable for off-road and adventure riding.<br>
+
+➖ Features<br><br>
+
+- Compatible with Yamaha Ténéré 700 handlebars.<br>
+- Protects handlebar ends from damage and wear.<br>
+- Clean and minimalist design.<br>
+- Lightweight and durable construction.<br>
+- Easy installation.<br>
+- Thread may feel tight during the first installations to ensure a secure fit.<br>
+- Custom thread sizes available on request.<br><br>
+
+➖ Important Information<br><br>
+
+- Thread compatibility is the buyer’s responsibility. Please confirm your handlebar specifications before ordering.<br>
+- If you require a different thread size, send a message before purchasing.<br>
+- Thread M16 × 1,5 mm<br><br>
+
+Free shipping.<br><br>
   </div>
   <span class="see-more">See more</span>
 </div>
@@ -648,14 +791,16 @@ Notes:<br><br>
 
     // GALLERY LOGIC
     const productImages = [
-    ["Shooting 2.jpg", "Preview1.jpg", "Preview2.jpg"],  
+    ["unisex-organic-sweatshirt-black-front-6adcca3210946.png", "unisex-organic-sweatshirt-black-back-6adcca320fd85.png", "Shooting 2.jpg"],  
     ["IMG_4505.PNG", "IMG_3603.jpeg"],
-    ["2Wheelsyard V2.jpg"],
+    ["8e626219-98c3-4ea5-8364-f7f67bf08c6c.png"],
     ["IMG_4421.jpeg", "IMG_4423.jpeg", "IMG_4506.PNG"],
     ["Dominator.jpg", "Support reflecteur.jpeg", "Supportclignotant.jpeg" , "IMG_4261.jpeg"],
-    ["Tshirt1.png", "Tshirt2.png"],
-    ["IMG_5924.jpeg", "IMG_5923.jpeg", "IMG_5929.jpeg", "IMG_5934.jpeg", "Captura de Ecrã (129).png", "Captura de Ecrã (130).png"],
+    ["unisex-staple-t-shirt-black-heather-front-and-back-6adccbcad1030.png", "unisex-staple-t-shirt-black-heather-left-front-6adccbcaca1cf.png", "unisex-staple-t-shirt-black-heather-back-6adccbcac17e0.png"],
+    ["IMG_5924.jpeg", "IMG_5923.jpeg", "IMG_5929.jpeg", "IMG_5934.jpeg", "Screenshot 2026-09-28 180643.png"],
     ["IMG_6273.jpeg", "IMG_6275.jpeg", "IMG_6272.jpeg", "Screenshot 2026-09-26 103304.png"],
+    ["IMG_6283.jpeg", "IMG_6285.jpeg", "Screenshot 2026-09-28 173646.png"],
+
 
 
 
