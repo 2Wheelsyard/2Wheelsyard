@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -5,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2Wheelsyard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
 
+  <style>
     html {
-  overflow-y: scroll; /* Força a presença da barra de scroll mesmo que não haja conteúdo suficiente */
-}
+      margin: 0;
+      padding: 0;
+      overflow-y: scroll;
+      background: #0c0c0c;
+    }
+
     @font-face {
       font-family: 'Rage Italic';
       src: url('fonts/RAGE.TTF') format('truetype');
@@ -20,29 +25,60 @@
 
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       color: white;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
-      background: linear-gradient(to bottom, #0f0f0f 0px, #0c0c0c 80px, rgba(255,255,255,0) 150px),
-        url('lamas_rally_monviso_2025-308.jpg');
+      background: url('lamas_rally_monviso_2025-308.jpg');
       background-size: cover;
       background-position: center -5%;
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
 
+    /* Blur progressivo no topo, sem segunda imagem */
+ body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    pointer-events: none;
+    z-index: 1;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 25%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 25%,
+        transparent 100%
+    );
+}
     body::after {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 105%);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 55%,
+        rgba(0,0,0,0.6) 105%
+      );
       z-index: 0;
     }
 
-    /* ====== LOGO TOPO (Unificado) ====== */
+    /* Logo superior */
     .logo-topo {
       position: absolute;
       top: -500px;
@@ -51,52 +87,49 @@
       z-index: 5;
       pointer-events: none;
     }
+
     .logo-topo img {
       width: 750px;
       height: auto;
       filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     }
 
-    /* ====== NAV (Unificado) ====== */
-   /* ====== NAV (Substitui este bloco em todas as páginas) ====== */
-nav {
-  position: fixed;
-  top: 25px;
-  right: 50px;
-  z-index: 100;
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  /* Removido o justify-content que estava no about */
-}
+    /* Navegação */
+    nav {
+      position: fixed;
+      top: 25px;
+      right: 50px;
+      z-index: 100;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  /* Removido o letter-spacing que estava no contact */
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-nav a:hover { 
-  color: #ccc; 
-}
+    nav a:hover {
+      color: #ccc;
+    }
 
-.instagram img {
-  width: 35px;
-  height: 35px;
-  filter: invert(1);
-  transition: transform 0.3s ease;
-  vertical-align: middle;
-  /* Removido o margin-left que estava no about */
-}
+    .instagram img {
+      width: 35px;
+      height: 35px;
+      filter: invert(1);
+      transition: transform 0.3s ease;
+      vertical-align: middle;
+    }
 
-.instagram:hover img { 
-  transform: scale(1.2); 
-}
+    .instagram:hover img {
+      transform: scale(1.2);
+    }
 
-    /* ====== HAMBURGER (Baseado no Contact) ====== */
+    /* Menu hamburger */
     .hamburger {
       display: none;
       position: fixed;
@@ -109,6 +142,7 @@ nav a:hover {
       flex-direction: column;
       justify-content: space-between;
     }
+
     .hamburger div {
       width: 100%;
       height: 4px;
@@ -117,79 +151,108 @@ nav a:hover {
       transition: all 0.3s ease;
     }
 
-    /* ====== LOGO LATERAL (Apenas Index) ====== */
-    .logo-slot {
-      position: fixed;
-      bottom: -20px;
-      left: 40px;
-      z-index: 5;
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translateY(10px);
     }
-    .logo-slot img { width: 320px; height: auto; }
 
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translateY(-10px);
+    }
+
+    /* Mobile */
     @media (max-width: 768px) {
-      body { overflow-y: auto; }
-      .logo-slot {
-  display: none;
-}
-      .hamburger { display: flex; }
-      .logo-topo {
-  top: -125px;
-  left: 50%;
-  transform: translateX(-50%);
-  
-}
+      body {
+        overflow-y: auto;
+      }
 
-.logo-topo img {
-  width: 420px;
-  height: auto;
-  margin-top: -100px;
-}
-      
+      .logo-slot {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .logo-topo {
+        top: -170px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo-topo img {
+        width: 420px;
+        height: auto;
+        margin-top: -100px;
+      }
+
       nav {
         position: fixed;
         top: 0;
         right: -100%;
         width: 100%;
         height: 100vh;
+        height: 100dvh;
         background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 30px;
         transition: right 0.4s ease;
-        right: -100%;
+        z-index: 100;
       }
-      
-      nav.show { right: 0; }
+
+      nav.show {
+        right: 0;
+      }
+
       nav a {
-    font-size: 26px;
-      .logo-slot { bottom: -50px; left: 50%; transform: translateX(-50%); }
-      .logo-slot img { width: 180px; }
+        font-size: 26px;
+      }
+
+      .logo-slot {
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo-slot img {
+        width: 180px;
+      }
     }
-    
-    .hamburger.active div:nth-child(1) { transform: rotate(45deg) translateY(10px); }
-    .hamburger.active div:nth-child(2) { opacity: 0; }
-    .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
   </style>
 </head>
+
 <body>
-  <div class="logo-slot"><img src="2Wheelsyardpng - Editado.png" alt="Logotipo" /></div>
-  <div class="logo-topo"><img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" /></div>
+  
+
+  <div class="logo-topo">
+    <img src="2WheelsyardIrageitalic.png" alt="Logotipo 2Wheelsyard" />
+  </div>
 
   <div class="hamburger" id="hamburger">
-    <div></div><div></div><div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
   <nav id="menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="shop.html">Shop</a>
-  <a href="contact.html">Contact</a>
-  <a href="https://www.instagram.com/2wheelsyard" target="_blank" class="instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
-</nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="https://www.etsy.com/de/shop/2wheelsyard" target="_blank" rel="noopener noreferrer">Shop</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.instagram.com/2wheelsyard" target="_blank" rel="noopener noreferrer" class="instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" />
+    </a>
+  </nav>
 
   <script>
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
+
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       menu.classList.toggle('show');
@@ -197,3 +260,4 @@ nav a:hover {
   </script>
 </body>
 </html>
+```
