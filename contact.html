@@ -58,7 +58,8 @@ body::after {
       pointer-events: none;
       z-index: 1;
 
-background-image: url('lamas_rally_monviso_2025-347.jpg');      background-size: cover;
+background-image: url('lamas_rally_monviso_2025-347.jpg');      
+background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
@@ -420,6 +421,11 @@ background-image: url('lamas_rally_monviso_2025-347.jpg');      background-size:
         font-size: 19px;
         margin-top: 25px;
       }
+      @media (max-width: 768px) {
+  body::after {
+    display: none;
+  }
+}
     }
   </style>
 </head>
